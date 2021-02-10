@@ -1,0 +1,32 @@
+﻿using System.IO;
+
+namespace Sample
+{
+    internal class Test
+    {
+
+        private static void Main(string[] args)
+        {
+            SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
+
+            // After purchasing the license, please insert your serial number here to activate the component.
+            //p.Serial = "XXXXXXXXXXX";
+
+            //Prepare variables with path.
+            string docxFile = Path.GetFullPath(@"..\..\example.docx");
+            string pdfFileFromDocx = Path.GetFullPath(@"..\..\exampleResultDocx.pdf");
+            string rtfFile = Path.GetFullPath(@"..\..\example.rtf");
+            string pdfFileFromRtf = Path.GetFullPath(@"..\..\exampleResultRtf.pdf");
+            string htmlFile = Path.GetFullPath(@"..\..\example.htm");
+            string pdfFileFromHtml = Path.GetFullPath(@"..\..\exampleResultHtml.pdf");
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(Path.GetFullPath(@"..\..\")) { UseShellExecute = true });
+
+            // Convert DOCX file to PDF file
+            p.DocxToPdfConvertFile(docxFile, pdfFileFromDocx);
+            // Convert RTF file to PDF file
+            p.RtfToPdfConvertFile(rtfFile, pdfFileFromRtf);
+            // Convert HTML file to PDF file
+            p.HtmlToPdfConvertFile(htmlFile, pdfFileFromHtml);
+        }
+    }
+}
