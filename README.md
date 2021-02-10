@@ -22,4 +22,4 @@ Directory | Description
 + **Product Home:** [PDF Metamorphosis .Net](https://sautinsoft.com/products/pdf-metamorphosis/)
 + **Download:** [Download PDF Metamorphosis .Net](https://sautinsoft.com/products/pdf-metamorphosis/download.php)
 + **Documentation:** [PDF Metamorphosis .Net Documentation API](https://sautinsoft.net/help/rtf-html-to-pdf-split-merge-net/html/welcome.htm)
-+ **Support:** [Support](https://sautinsoft.com/support.php)
++ **Support:** [You are always welcome at SautinSoft company with your feedback and questions, it helps us to work more effective!](https://sautinsoft.com/support.php)
