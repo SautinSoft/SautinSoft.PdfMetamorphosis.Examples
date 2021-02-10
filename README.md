@@ -2,7 +2,7 @@
 The component is entirely written in managed C#, it's absolutely standalone and doesn't require Adobe Acrobat® or MS Word®.
 Developers can convert their files into PDF with only two lines of code within C#, VB.Net, ASP.Net!
 
-This repository contains [Examples](Examples) for [PDF Metamorphosis .Net](https://sautinsoft.com/products/pdf-metamorphosis/examples/) to help you learn and write your own applications.
+This repository contains [Examples of PDF Metamorphosis .Net](https://sautinsoft.com/products/pdf-metamorphosis/examples/) to help you learn and write your own applications.
 
 <p align="center">
 
