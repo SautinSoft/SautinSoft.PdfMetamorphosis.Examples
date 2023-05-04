@@ -9,11 +9,11 @@ namespace Sample
 
         static void Main(string[] args)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             // How to change the page footer to the custom footer
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-
-            // After purchasing the license, please insert your serial number here to activate the component
-            //p.Serial = "XXXXXXXXXXX";            
 
             if (p != null)
             {                
@@ -28,7 +28,7 @@ namespace Sample
                 }
 
                 // Let's change the footer to custom
-                string footerInHtml = "<table width=\"100%\" border=\"1\"><tr><td width=\"50%\" align=\"center\"></td><td>This is new custom footer!</td></tr></table>";
+                string footerInHtml = "<table width=\"100%\" border=\"1\"><tr><td width=\"50%\"></td><td>This is new custom footer!</td></tr></table>";
                 p.PageSettings.Footer.FromString(footerInHtml, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html);
 
                 // Let's convert RTF to PDF and change the footer to the custom

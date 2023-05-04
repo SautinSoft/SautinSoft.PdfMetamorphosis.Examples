@@ -4,10 +4,10 @@ Namespace Sample
         Shared Sub Main(ByVal args() As String)
 
             ' How to set a version for the PDF document.
-            Dim p As New SautinSoft.PdfMetamorphosis()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
-            ' After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
+            Dim p As New SautinSoft.PdfMetamorphosis()
 
             ' PDF Metamorphosis .Net generates PDF 1.4 document by default.
             ' Let's change the PDF version to PDF_A.

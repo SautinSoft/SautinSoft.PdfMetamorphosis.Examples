@@ -3,6 +3,9 @@ Imports System.IO
 Module sample
 
     Sub Main()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+
         Dim p As New SautinSoft.PdfMetamorphosis()
         Dim rtfPath As String = "..\..\example.rtf"
         Dim pdfPath As String = "..\..\test.pdf"

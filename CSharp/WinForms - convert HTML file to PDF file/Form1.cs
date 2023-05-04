@@ -73,9 +73,10 @@ namespace SampleWinForms
 
         private void buttonConvert_Click(object sender, EventArgs e)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-            // After purchasing the license, please insert your serial number here to activate the component
-            //p.Serial = "XXXXXXXXXXX";
 
             //specify some options
             p.PageSettings.Size.A4();

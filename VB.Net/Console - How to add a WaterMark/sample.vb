@@ -2,6 +2,9 @@
 Module sample
 
     Sub Main()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+
         Dim p As New SautinSoft.PdfMetamorphosis()
 
         Dim w1 As New SautinSoft.PdfMetamorphosis.WaterMark("..\..\WaterMark.png")

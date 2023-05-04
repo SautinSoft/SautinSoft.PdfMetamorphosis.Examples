@@ -53,10 +53,10 @@ Namespace SampleWinForms
         End Sub
 
         Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-            Dim p As New SautinSoft.PdfMetamorphosis()
-
-            ' After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+          
+		  Dim p As New SautinSoft.PdfMetamorphosis()
 
             'specify some options
             p.PageSettings.Size.A4()

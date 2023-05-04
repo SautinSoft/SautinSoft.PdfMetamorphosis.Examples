@@ -9,11 +9,11 @@ namespace Sample
 		
 		static void Main(string[] args)
 		{
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             //How to set page size, orientation and margins
 			SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-
-			//After purchasing the license, please insert your serial number here to activate the component
-			//p.Serial = "XXXXXXXXXXX";
 
 			//Let's set: A3, Landscape orientation, left and right margins: 1.5 Inch, top and bottom: 1 Inch
             p.PageSettings.Size.A3();

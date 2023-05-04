@@ -4,16 +4,16 @@ Module sample
     Sub Main()
 
         ' This sample shows how to specify page numbers
-        Dim p As New SautinSoft.PdfMetamorphosis()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
-        ' After purchasing the license, please insert your serial number here to activate the component
-        'p.Serial = "XXXXXXXXXXX"
+        Dim p As New SautinSoft.PdfMetamorphosis()
 
         'Page 1 of N, position: 30 mm from the left of the page
         p.PageSettings.Numbering.Text = "Page {page} of {numpages}"
         p.PageSettings.Numbering.PosX.Mm = 30
         p.PageSettings.Numbering.PosY.Mm = 10
-        p.PageSettings.Numbering.FontFace = "Courier"
+        p.PageSettings.Numbering.FontFace = "Courier New"
         p.PageSettings.Numbering.FontSize = 22
 
         ' This is page number N

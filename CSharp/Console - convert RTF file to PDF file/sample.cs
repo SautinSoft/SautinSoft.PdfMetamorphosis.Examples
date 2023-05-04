@@ -10,11 +10,10 @@ namespace Sample
 
         static void Main(string[] args)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
 
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-
-            // After purchasing the license, please insert your serial number here to activate the component
-            //p.Serial = "XXXXXXXXXXX";
 
             // Specify some page options.
             p.PageSettings.Orientation = SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Landscape;

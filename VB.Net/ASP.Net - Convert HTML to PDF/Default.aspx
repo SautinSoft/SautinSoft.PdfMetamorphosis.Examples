@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="true" CodeFile="Default.aspx.vb" Inherits="_Default" %>
+﻿<%@ Page Language="VB" CodeFile="Default.aspx.vb" Inherits="_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -27,7 +27,7 @@
         </table>
         <p><br />
             Image 1:<br />
-        <img src="http://www.sautinsoft.net/samples/image%20samples/logo_green.jpg" alt="" /></p>        
+        <img src="logo_green.jpg" alt="" /></p>        
             
         <p>Bullets:</p>
         <ul>

@@ -101,6 +101,9 @@ namespace SampleWinForms
 
 		private void button1_Click(object sender, System.EventArgs e)
 		{
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
 			SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
 
 			if (p != null)

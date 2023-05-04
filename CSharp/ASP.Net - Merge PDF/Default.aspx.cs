@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 using System.IO;
 using System.Collections;
 
+
 public partial class _Default : System.Web.UI.Page 
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -18,10 +19,9 @@ public partial class _Default : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+		// Activate your license here
+		// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
         SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-
-		//After purchasing the license, please insert your serial number here to activate the component
-        //p.Serial = "XXXXXXXXXXX";
 
         ArrayList pdfs = new ArrayList();
         int files = 0;

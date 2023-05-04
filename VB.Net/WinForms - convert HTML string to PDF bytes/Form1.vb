@@ -54,10 +54,10 @@ Namespace SampleWinForms
         End Sub
 
         Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-			Dim p As New SautinSoft.PdfMetamorphosis()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
-            'After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
+			Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
                 Dim htmlPath As String = "..\..\example.htm"

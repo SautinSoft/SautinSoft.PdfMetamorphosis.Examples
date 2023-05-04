@@ -80,9 +80,10 @@ public partial class _Default : System.Web.UI.Page
 
         if (html.Length > 0)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+			
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-		    //After purchasing the license, please insert your serial number here to activate the component
-            //p.Serial = "XXXXXXXXXXX";
 
             p.HtmlSettings.BaseUrl = url;
 

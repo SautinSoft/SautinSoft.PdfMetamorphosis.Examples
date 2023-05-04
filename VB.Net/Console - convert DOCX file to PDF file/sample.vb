@@ -5,10 +5,10 @@ Namespace Sample
     Friend Class Test
 
         Shared Sub Main(ByVal args() As String)
-            Dim p As New SautinSoft.PdfMetamorphosis()
+		' Activate your license here
+		' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
-            ' After purchasing the license, please insert your serial number here to activate the component.
-            'p.Serial = "XXXXXXXXXXX"
+            Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
                 Dim docxPath As String = "..\..\example.docx"

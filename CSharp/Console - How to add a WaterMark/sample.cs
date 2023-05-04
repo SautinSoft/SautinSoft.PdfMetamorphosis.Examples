@@ -10,6 +10,9 @@ namespace Sample
 
         static void Main(string[] args)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
 
             SautinSoft.PdfMetamorphosis.WaterMark w1 = new SautinSoft.PdfMetamorphosis.WaterMark(@"..\..\WaterMark.png");

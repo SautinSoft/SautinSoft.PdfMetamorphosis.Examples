@@ -3,12 +3,11 @@ Namespace Sample
     Friend Class Test
 
         Shared Sub Main(ByVal args() As String)
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
             ' How to set a single font for the whole PDF document.
             Dim p As New SautinSoft.PdfMetamorphosis()
-
-            ' After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
 
             ' Let's make that the all text in PDF became in 'Courier New' font
             p.TextSettings.FontFace.Custom("Courier New")

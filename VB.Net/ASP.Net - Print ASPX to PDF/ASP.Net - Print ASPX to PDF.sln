@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ASP.Net - Print ASPX to PDF", ".", "{9ADC096C-CD7F-40D9-8F11-120023EAEA8E}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/ASP.Net - Print ASPX to PDF"
 		Debug.AspNetCompiler.PhysicalPath = "..\ASP.Net - Print ASPX to PDF\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\ASP.Net - Print ASPX to PDF\"

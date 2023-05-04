@@ -9,11 +9,11 @@ namespace Sample
 		
 		static void Main(string[] args)
 		{
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             // How to set a single font for the whole PDF document.
 			SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-
-			// After purchasing the license, please insert your serial number here to activate the component
-			//p.Serial = "XXXXXXXXXXX";
 
             // Let's make that the all text in PDF became in 'Comic Sans MS' font
 			p.TextSettings.FontFace.Custom("Comic Sans MS");

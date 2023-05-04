@@ -8,14 +8,14 @@ namespace Sample
 
         static void Main(string[] args)
         {
+			// Activate your license here
+			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+
             //How to add page header and footer
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
 
-            //After purchasing the license, please insert your serial number here to activate the component
-            //p.Serial = "XXXXXXXXXXX";
-
             //Let's add page header in HTML format
-            string headerInHtml = "<table width=\"100%\" border=\"1\"><tr><td width=\"50%\" align=\"center\"></td><td>You are welcome!</td></tr></table>";
+            string headerInHtml = "<table width=\"100%\" border=\"1\"><tr><td></td><td width=\"50%\" align=\"center\">You are welcome!</td></tr></table>";
             p.PageSettings.Header.FromString(headerInHtml, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html);
 
             string footerInRtf = @"{\rtf1\i Italic footer }";

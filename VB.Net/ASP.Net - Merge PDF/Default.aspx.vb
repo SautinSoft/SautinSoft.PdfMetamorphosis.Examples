@@ -5,10 +5,10 @@ Partial Public Class _Default
         Result.Text = ""
     End Sub
     Protected Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+		' Activate your license here
+		' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+		
         Dim p As New SautinSoft.PdfMetamorphosis()
-
-        'After purchasing the license, please insert your serial number here to activate the component
-        'p.Serial = "XXXXXXXXXXX"
 
         Dim pdfs As New ArrayList()
         Dim files As Integer = 0

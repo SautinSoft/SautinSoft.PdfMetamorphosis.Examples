@@ -65,10 +65,9 @@ Partial Public Class _Default
         Dim url As String = System.Web.HttpContext.Current.Request.Url.AbsoluteUri
 
         If html.Length > 0 Then
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
             Dim p As New SautinSoft.PdfMetamorphosis()
-
-            'After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
 
             p.HtmlSettings.BaseUrl = url
 

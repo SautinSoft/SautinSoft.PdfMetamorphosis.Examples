@@ -89,6 +89,9 @@ Namespace SampleWinForms
         End Sub
 
         Private Sub button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles button1.Click
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+
 			Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then

@@ -1,75 +1,72 @@
+Imports System
+Imports System.Data
+Imports System.Configuration
+Imports System.Web
+Imports System.Web.Security
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
+Imports System.Web.UI.WebControls.WebParts
+Imports System.Web.UI.HtmlControls
 Imports System.IO
 Imports System.Net
 
 Partial Public Class _Default
-    Inherits System.Web.UI.Page
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
-        Result.Text = ""
-    End Sub
-    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
-        Dim p As New SautinSoft.PdfMetamorphosis()
+	Inherits System.Web.UI.Page
 
-        ' After purchasing the license, please insert your serial number here to activate the component
-        'p.Serial = "XXXXXXXXXXX"
+	Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+		
+	End Sub
 
-        ' Let's set page numbers
-        p.PageSettings.Numbering.Text = "Page {page} of {numpages}"
+	Protected Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
+		
+		' Activate your license here
+		' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+		Dim p As New SautinSoft.PdfMetamorphosis()
 
-        ' Set page header within HTML string
-        p.PageSettings.Header.FromString("<table border=""1""><tr><td>We added this header using the property ""Header.Html""</td></tr></table>", SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
+		' Let's set page numbers
+		p.PageSettings.Numbering.Text = "Page {page} of {numpages}"
 
-        ' Add page footer from HTML file
-        p.PageSettings.Footer.FromFile(Path.Combine(Server.MapPath(""), "footer.htm"), SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
+		' Set page header within HTML string
+		p.PageSettings.Header.FromString("<table border=""1""><tr><td>We added this header using the property ""Header.Html""</td></tr></table>", SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
 
-        ' Get content of the ASPX page as HTML document
-        Dim htmlString As String = GetHtmlFromAspx(Path.Combine(Server.MapPath(""), "Default.aspx"))
+		' Add page footer from HTML file
+		p.PageSettings.Footer.FromFile(Path.Combine(Server.MapPath(""), "footer.htm"), SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
 
-        p.HtmlSettings.BaseUrl = Server.MapPath("")
+		' Get content of the ASPX page as HTML document
+		Dim htmlString As String = GetHtmlFromAspx(Path.Combine(Server.MapPath(""), "Default.aspx"))
 
-        Dim pdfBytes() As Byte = p.HtmlToPdfConvertStringToByte(htmlString)
+		p.HtmlSettings.BaseUrl = Server.MapPath("")
 
-        'show PDF
-        If pdfBytes IsNot Nothing Then
-            Response.Buffer = True
-            Response.Clear()
-            Response.ContentType = "application/PDF"
-            Response.BinaryWrite(pdfBytes)
-            Response.Flush()
-            Response.End()
-        Else
-            Result.Text = "Converting failed!"
-        End If
-    End Sub
-    Public Shared Function GetHtmlFromAspx(ByVal url As String) As String
-        Dim contents As String = ""
+		Dim pdfBytes() As Byte = p.HtmlToPdfConvertStringToByte(htmlString)
 
-        If url.Length > 6 Then
-            'open 'http://' file
-            If (url.Chars(0) = "h"c OrElse url.Chars(0) = "H"c) AndAlso (url.Chars(1) = "t"c OrElse url.Chars(1) = "T"c) AndAlso (url.Chars(2) = "t"c OrElse url.Chars(2) = "T"c) AndAlso (url.Chars(3) = "p"c OrElse url.Chars(3) = "P"c) AndAlso url.Chars(4) = ":"c AndAlso url.Chars(5) = "/"c AndAlso url.Chars(6) = "/"c Then
+		'show PDF
+		If pdfBytes IsNot Nothing Then
+			Response.Buffer = True
+			Response.Clear()
+			Response.ContentType = "application/PDF"
+			Response.BinaryWrite(pdfBytes)
+			Response.Flush()
+			Response.End()
+		Else
+			
+		End If
+	End Sub
+	Public Shared Function GetHtmlFromAspx(ByVal url As String) As String
+		Dim contents As String = ""
+		Dim urlpage As String = HttpContext.Current.Request.Url.AbsoluteUri
 
-                Dim StreamHttp As Stream = Nothing
-                Dim resp As WebResponse = Nothing
-                Dim webrequest As HttpWebRequest = Nothing
-                Try
-                    webrequest = CType(webrequest.Create(url), HttpWebRequest)
-                    resp = webrequest.GetResponse()
-                    StreamHttp = resp.GetResponseStream()
-                    Dim sr As New StreamReader(StreamHttp)
-                    contents = sr.ReadToEnd()
-                    Return contents
-                Catch
-                End Try
 
-                'local file
-            Else
-                Try
-                    Dim sr As New StreamReader(url)
-                    contents = sr.ReadToEnd()
-                    sr.Close()
-                Catch
-                End Try
-            End If
-        End If
-        Return contents
-    End Function
+		Dim StreamHttp As Stream = Nothing
+		Dim resp As WebResponse = Nothing
+		Dim webrequest As HttpWebRequest = Nothing
+
+			webrequest = CType(WebRequest.Create(urlpage), HttpWebRequest)
+			webrequest.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322)"
+			resp = webrequest.GetResponse()
+			StreamHttp = resp.GetResponseStream()
+			Dim sr As New StreamReader(StreamHttp)
+			contents = sr.ReadToEnd()
+			Return contents
+
+	End Function
 End Class

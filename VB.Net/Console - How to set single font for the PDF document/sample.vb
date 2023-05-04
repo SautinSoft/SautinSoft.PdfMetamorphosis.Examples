@@ -4,10 +4,10 @@ Namespace Sample
         Shared Sub Main(ByVal args() As String)
 
             ' How to set a single font for the whole PDF document.
-            Dim p As New SautinSoft.PdfMetamorphosis()
+				' Activate your license here
+				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
-            ' After purchasing the license, please insert your serial number here to activate the component
-            'p.Serial = "XXXXXXXXXXX"
+            Dim p As New SautinSoft.PdfMetamorphosis()
 
             ' Let's make that the all text in PDF became in 'Comic Sans MS' font
             p.TextSettings.FontFace.Custom("Comic Sans MS")
