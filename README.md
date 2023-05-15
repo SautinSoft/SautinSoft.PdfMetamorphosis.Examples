@@ -1,7 +1,7 @@
 ![Nuget](https://img.shields.io/nuget/v/sautinsoft.pdfmetorphosis) ![Nuget](https://img.shields.io/nuget/dt/sautinsoft.pdfmetamorphosis) 
 # .NET SDK to convert HTML, DOCX, TXT to PDF
 
-![metamorphosis](https://user-images.githubusercontent.com/79837963/229720453-ce02ba06-19af-4a69-995a-351e7ac60257.png)
+![meta](https://github.com/SautinSoft/SautinSoft.PdfMetamorphosis.Examples/assets/79837963/ab428377-1b77-431f-bfce-9e0af2d551dc)
 
 [SautinSoft.PdfMetamorphosis](https://sautinsoft.com/products/pdf-metamorphosis/) is .NET assembly (SDK) which gives API  to convert Text, HTML, RTF, DOC and DOCX documents to PDF format.
 
