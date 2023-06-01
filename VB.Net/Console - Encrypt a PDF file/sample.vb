@@ -17,7 +17,7 @@ Namespace Sample
 			p.PdfSettings.PdfSecurity.UserPassword = "0987654321"
 
 			If p IsNot Nothing Then
-				Dim rtfPath As String = "..\..\example.rtf"
+				Dim rtfPath As String = "..\..\..\example.rtf"
 				Dim pdfPath As String = Path.ChangeExtension(rtfPath, ".pdf")
 
 				Dim i As Integer = p.RtfToPdfConvertFile(rtfPath, pdfPath)

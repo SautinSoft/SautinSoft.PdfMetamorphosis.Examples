@@ -17,8 +17,8 @@ Module sample
         p.PageSettings.Footer.FromString(footerInRtf, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Rtf)
 
         If p IsNot Nothing Then
-            Dim inputFile As String = "..\..\example.htm"
-            Dim outputFile As String = "..\..\test.pdf"
+            Dim inputFile As String = "..\..\..\example.htm"
+            Dim outputFile As String = "..\..\..\test.pdf"
 
             Dim result As Integer = p.HtmlToPdfConvertFile(inputFile, outputFile)
 

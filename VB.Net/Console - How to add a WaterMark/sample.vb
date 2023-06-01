@@ -7,7 +7,7 @@ Module sample
 
         Dim p As New SautinSoft.PdfMetamorphosis()
 
-        Dim w1 As New SautinSoft.PdfMetamorphosis.WaterMark("..\..\WaterMark.png")
+        Dim w1 As New SautinSoft.PdfMetamorphosis.WaterMark("..\..\..\WaterMark.png")
 
         w1.PosX.Mm = 0
         w1.PosX.Mm = 0
@@ -17,7 +17,7 @@ Module sample
         p.WaterMarks.Add(w1)
 
         Dim w2 As SautinSoft.PdfMetamorphosis.WaterMark = p.WaterMarks.Add()
-        w2.Img = System.Drawing.Image.FromFile("..\..\WaterMark.png")
+        w2.Img = System.Drawing.Image.FromFile("..\..\..\WaterMark.png")
         w2.Transparency = 20
         w2.PosX.Mm = 60
         w2.PosY.Mm = 0
@@ -26,8 +26,8 @@ Module sample
         w2.SelectedPages = New Integer() {1}
 
         If p IsNot Nothing Then
-            Dim rtfPath As String = "..\..\example.rtf"
-            Dim pdfPath As String = "..\..\test.pdf"
+            Dim rtfPath As String = "..\..\..\example.rtf"
+            Dim pdfPath As String = "..\..\..\test.pdf"
 
             Dim i As Integer = p.RtfToPdfConvertFile(rtfPath, pdfPath)
 

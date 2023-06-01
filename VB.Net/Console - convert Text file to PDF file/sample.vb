@@ -18,7 +18,7 @@ Namespace Sample
             p.PageSettings.MarginBottom.Inch(1.0F)
 
             If p IsNot Nothing Then
-                Dim textPath As String = "..\..\example.txt"
+                Dim textPath As String = "..\..\..\example.txt"
                 Dim pdfPath As String = Path.ChangeExtension(textPath, ".pdf")
 
                 If p.TextToPdfConvertFile(textPath, pdfPath) = 0 Then

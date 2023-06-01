@@ -31,7 +31,7 @@ namespace Sample
 
 			if (p != null)
 			{
-                string htmlPath = @"..\..\example.htm";
+                string htmlPath = @"..\..\..\example.htm";
                 string pdfPath = Path.ChangeExtension(htmlPath, ".pdf");
 				string htmlString = "";
 

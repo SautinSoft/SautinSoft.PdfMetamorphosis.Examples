@@ -30,8 +30,8 @@ namespace Sample
 
 			if (p != null)
 			{
-                string rtfPath = @"..\..\example.rtf";
-                string pdfPath = @"..\..\example.pdf";
+                string rtfPath = @"..\..\..\example.rtf";
+                string pdfPath = @"..\..\..\example.pdf";
 
 				int i = p.RtfToPdfConvertFile(rtfPath,pdfPath);
 

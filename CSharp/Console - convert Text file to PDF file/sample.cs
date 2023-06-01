@@ -24,7 +24,7 @@ namespace Sample
 
 			if (p != null)
 			{
-                string textPath = @"..\..\example.txt";
+                string textPath = @"..\..\..\example.txt";
 				string pdfPath = Path.ChangeExtension(textPath,".pdf");
 
                 if (p.TextToPdfConvertFile(textPath, pdfPath) == 0)

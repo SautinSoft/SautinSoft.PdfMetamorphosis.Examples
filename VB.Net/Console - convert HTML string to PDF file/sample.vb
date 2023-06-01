@@ -26,7 +26,7 @@ Namespace Sample
             p.PageSettings.Numbering.PosY.Mm = 10
 
             If p IsNot Nothing Then
-                Dim htmlPath As String = "..\..\example.htm"
+                Dim htmlPath As String = "..\..\..\example.htm"
                 Dim pdfPath As String = Path.ChangeExtension(htmlPath, ".pdf")
                 Dim htmlString As String = ""
 

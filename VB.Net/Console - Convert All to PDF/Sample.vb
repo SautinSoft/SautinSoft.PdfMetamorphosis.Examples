@@ -10,13 +10,13 @@ Namespace Sample
 			Dim p As New SautinSoft.PdfMetamorphosis()
 
             ' Prepare variables with path.
-            Dim docxFile As String = Path.GetFullPath("..\..\example.docx")
-            Dim pdfFileFromDocx As String = Path.GetFullPath("..\..\exampleFromDocx.pdf")
-            Dim rtfFile As String = Path.GetFullPath("..\..\example.rtf")
-            Dim pdfFileFromRtf As String = Path.GetFullPath("..\..\exampleFromRtf.pdf")
-            Dim htmlFile As String = Path.GetFullPath("..\..\example.htm")
-            Dim pdfFileFromHtml As String = Path.GetFullPath("..\..\exampleFromHtml.pdf")
-            System.Diagnostics.Process.Start(New System.Diagnostics.ProcessStartInfo(Path.GetFullPath("..\..\")) With {.UseShellExecute = True})
+            Dim docxFile As String = Path.GetFullPath("..\..\..\example.docx")
+            Dim pdfFileFromDocx As String = Path.GetFullPath("..\..\..\exampleFromDocx.pdf")
+            Dim rtfFile As String = Path.GetFullPath("..\..\..\example.rtf")
+            Dim pdfFileFromRtf As String = Path.GetFullPath("..\..\..\exampleFromRtf.pdf")
+            Dim htmlFile As String = Path.GetFullPath("..\..\..\example.htm")
+            Dim pdfFileFromHtml As String = Path.GetFullPath("..\..\..\exampleFromHtml.pdf")
+            System.Diagnostics.Process.Start(New System.Diagnostics.ProcessStartInfo(Path.GetFullPath("..\..\..\")) With {.UseShellExecute = True})
 
             ' Convert DOCX file to PDF file
             p.DocxToPdfConvertFile(docxFile, pdfFileFromDocx)

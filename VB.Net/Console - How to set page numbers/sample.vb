@@ -20,8 +20,8 @@ Module sample
         'p.PageSettings.Numbering.Text = "This is page number {page}"
 
         If p IsNot Nothing Then
-            Dim rtfPath As String = "..\..\example.rtf"
-            Dim pdfPath As String = "..\..\test.pdf"
+            Dim rtfPath As String = "..\..\..\example.rtf"
+            Dim pdfPath As String = "..\..\..\test.pdf"
 
             Dim i As Integer = p.RtfToPdfConvertFile(rtfPath, pdfPath)
 

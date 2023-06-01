@@ -16,7 +16,7 @@ namespace Sample
 		
 			if (p != null)
 			{
-                string docxPath = @"..\..\example.docx";
+                string docxPath = @"..\..\..\example.docx";
                 string pdfPath = Path.ChangeExtension(docxPath, ".pdf");
                 byte[] docx = File.ReadAllBytes(docxPath);
                 			

@@ -9,7 +9,7 @@ Namespace Sample
             Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
-                Dim rtfPath As String = "..\..\example.rtf"
+                Dim rtfPath As String = "..\..\..\example.rtf"
                 Dim pdfPath As String = Path.ChangeExtension(rtfPath, ".pdf")
 
                 ' 1. Get RTF content from file

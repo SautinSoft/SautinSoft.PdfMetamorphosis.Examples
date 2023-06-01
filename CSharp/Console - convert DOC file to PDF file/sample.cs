@@ -16,7 +16,7 @@ namespace Sample
 
             if (p != null)
             {
-                string docPath = @"..\..\example.doc";
+                string docPath = @"..\..\..\example.doc";
                 string pdfPath = Path.ChangeExtension(docPath, ".pdf");
 
                 // 2. Convert DOC file to PDF file

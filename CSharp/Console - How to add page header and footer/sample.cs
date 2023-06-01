@@ -23,7 +23,7 @@ namespace Sample
 
             if (p != null)
             {
-                string inputFile = @"..\..\example.htm";
+                string inputFile = @"..\..\..\example.htm";
                 string outputFile = Path.ChangeExtension(inputFile, ".pdf");
 
                 int result = p.HtmlToPdfConvertFile(inputFile, outputFile);

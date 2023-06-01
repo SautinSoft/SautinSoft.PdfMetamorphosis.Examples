@@ -13,8 +13,8 @@ namespace Sample
 			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
 
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
-            string rtfPath = @"..\..\example.rtf";
-            string pdfPath = @"..\..\test.pdf";
+            string rtfPath = @"..\..\..\example.rtf";
+            string pdfPath = @"..\..\..\test.pdf";
 
             // Let's create a PDF file from RTF file
             p.PageSettings.Orientation = SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Landscape;
@@ -33,12 +33,12 @@ namespace Sample
 
             #region merge PDF files
             //Merge only 1st and 3rd pages
-            string[] pdfFiles = { @"..\..\test-00001.pdf", @"..\..\test-00003.pdf" };
+            string[] pdfFiles = { @"..\..\..\test-00001.pdf", @"..\..\..\test-00003.pdf" };
             p.MergePDFFileArrayToPDFFile(pdfFiles, @"..\..\test_Split_and_Merge_1and3page.pdf");
             #endregion
 
             //Show merged PDF (it doesn't have 2nd page)
-			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(@"..\..\test_Split_and_Merge_1and3page.pdf") { UseShellExecute = true });
+			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(@"..\..\..\test_Split_and_Merge_1and3page.pdf") { UseShellExecute = true });
         }
     }
 }

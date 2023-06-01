@@ -11,7 +11,7 @@ Namespace Sample
             Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
-                Dim docPath As String = "..\..\example.doc"
+                Dim docPath As String = "..\..\..\example.doc"
                 Dim pdfPath As String = Path.ChangeExtension(docPath, ".pdf")
 
                 ' 2. Convert DOC file to PDF file

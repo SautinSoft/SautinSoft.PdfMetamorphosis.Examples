@@ -11,7 +11,7 @@ Namespace Sample
             Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
-                Dim docxPath As String = "..\..\example.docx"
+                Dim docxPath As String = "..\..\..\example.docx"
                 Dim pdfPath As String = Path.ChangeExtension(docxPath, ".pdf")
                 Dim docx() As Byte = File.ReadAllBytes(docxPath)
 

@@ -18,8 +18,8 @@ Module sample
         p.PageSettings.MarginBottom.Inch(1.0F)
 
         If p IsNot Nothing Then
-            Dim rtfPath As String = "..\..\example.rtf"
-            Dim pdfPath As String = "..\..\test.pdf"
+            Dim rtfPath As String = "..\..\..\example.rtf"
+            Dim pdfPath As String = "..\..\..\test.pdf"
 
             Dim i As Integer = p.RtfToPdfConvertFile(rtfPath, pdfPath)
 

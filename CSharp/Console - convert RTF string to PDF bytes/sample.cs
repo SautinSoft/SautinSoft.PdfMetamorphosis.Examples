@@ -23,7 +23,7 @@ namespace Sample
 
 			if (p != null)
 			{
-                string rtfPath = @"..\..\example.rtf";
+                string rtfPath = @"..\..\..\example.rtf";
                 string pdfPath = Path.ChangeExtension(rtfPath, ".pdf");
                 byte[] rtfBytes = File.ReadAllBytes(rtfPath);
 			

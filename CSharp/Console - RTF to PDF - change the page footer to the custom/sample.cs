@@ -17,9 +17,9 @@ namespace Sample
 
             if (p != null)
             {                
-                string inputFile = @"..\..\example.rtf";
-                string originalPdf = @"..\..\Original.pdf";
-                string customPdf = @"..\..\CustomFooter.pdf";
+                string inputFile = @"..\..\..\example.rtf";
+                string originalPdf = @"..\..\..\Original.pdf";
+                string customPdf = @"..\..\..\CustomFooter.pdf";
 
                 // Let's convert RTF which has an own page footer to PDF
                 if (p.RtfToPdfConvertFile(inputFile, originalPdf)==0)

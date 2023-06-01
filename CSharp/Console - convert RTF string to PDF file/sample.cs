@@ -17,7 +17,7 @@ namespace Sample
 
 			if (p != null)
 			{
-                string rtfPath = @"..\..\example.rtf";
+                string rtfPath = @"..\..\..\example.rtf";
 				string pdfPath = Path.ChangeExtension(rtfPath,".pdf");
 
                 // 1. Get RTF content from file

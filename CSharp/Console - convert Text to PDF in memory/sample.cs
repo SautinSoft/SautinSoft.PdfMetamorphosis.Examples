@@ -17,7 +17,7 @@ namespace Sample
 
 			if (p != null)
 			{
-				string textPath = @"..\..\example.txt";
+				string textPath = @"..\..\..\example.txt";
                 string pdfPath = Path.ChangeExtension(textPath, ".pdf");
                 string textString = File.ReadAllText(textPath);
 			

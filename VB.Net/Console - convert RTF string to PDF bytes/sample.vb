@@ -15,7 +15,7 @@ Namespace Sample
             p.PageSettings.Numbering.Text = "Page {page} of {numpages}"
 
             If p IsNot Nothing Then
-                Dim rtfPath As String = "..\..\example.rtf"
+                Dim rtfPath As String = "..\..\..\example.rtf"
                 Dim pdfPath As String = Path.ChangeExtension(rtfPath, ".pdf")
                 Dim rtfBytes() As Byte = File.ReadAllBytes(rtfPath)
 

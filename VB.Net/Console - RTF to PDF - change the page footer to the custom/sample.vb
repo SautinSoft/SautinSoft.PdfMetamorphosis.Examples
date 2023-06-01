@@ -10,9 +10,9 @@ Module sample
         Dim p As New SautinSoft.PdfMetamorphosis()
 
         If p IsNot Nothing Then
-            Dim inputFile As String = "..\..\example.rtf"
-            Dim originalPdf As String = "..\..\Original.pdf"
-            Dim customPdf As String = "..\..\CustomFooter.pdf"
+            Dim inputFile As String = "..\..\..\example.rtf"
+            Dim originalPdf As String = "..\..\..\Original.pdf"
+            Dim customPdf As String = "..\..\..\CustomFooter.pdf"
 
             'Let's convert RTF which has a page footer to PDF
             If p.RtfToPdfConvertFile(inputFile, originalPdf) = 0 Then

@@ -15,7 +15,7 @@ Namespace Sample
 			
             Dim p As New SautinSoft.PdfMetamorphosis()
 
-            Dim docxPath As String = "..\..\example.docx"
+            Dim docxPath As String = "..\..\..\example.docx"
             Dim pdfPath As String = Path.ChangeExtension(docxPath, ".pdf")
             If p.DocxToPdfConvertFile(docxPath, pdfPath) = 0 Then
                 System.Diagnostics.Process.Start(New System.Diagnostics.ProcessStartInfo(pdfPath) With {.UseShellExecute = True})

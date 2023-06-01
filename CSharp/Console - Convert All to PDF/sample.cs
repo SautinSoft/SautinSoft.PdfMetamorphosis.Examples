@@ -13,13 +13,13 @@ namespace Sample
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
 
             //Prepare variables with path.
-            string docxFile = Path.GetFullPath(@"..\..\example.docx");
-            string pdfFileFromDocx = Path.GetFullPath(@"..\..\exampleResultDocx.pdf");
-            string rtfFile = Path.GetFullPath(@"..\..\example.rtf");
-            string pdfFileFromRtf = Path.GetFullPath(@"..\..\exampleResultRtf.pdf");
-            string htmlFile = Path.GetFullPath(@"..\..\example.htm");
-            string pdfFileFromHtml = Path.GetFullPath(@"..\..\exampleResultHtml.pdf");
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(Path.GetFullPath(@"..\..\")) { UseShellExecute = true });
+            string docxFile = Path.GetFullPath(@"..\..\..\example.docx");
+            string pdfFileFromDocx = Path.GetFullPath(@"..\..\..\exampleResultDocx.pdf");
+            string rtfFile = Path.GetFullPath(@"..\..\..\example.rtf");
+            string pdfFileFromRtf = Path.GetFullPath(@"..\..\..\exampleResultRtf.pdf");
+            string htmlFile = Path.GetFullPath(@"..\..\..\example.htm");
+            string pdfFileFromHtml = Path.GetFullPath(@"..\..\..\exampleResultHtml.pdf");
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(Path.GetFullPath(@"..\..\..\")) { UseShellExecute = true });
 
             // Convert DOCX file to PDF file
             p.DocxToPdfConvertFile(docxFile, pdfFileFromDocx);

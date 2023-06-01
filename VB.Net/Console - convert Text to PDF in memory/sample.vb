@@ -9,7 +9,7 @@ Namespace Sample
             Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
-                Dim textPath As String = "..\..\example.txt"
+                Dim textPath As String = "..\..\..\example.txt"
                 Dim pdfPath As String = Path.ChangeExtension(textPath, ".pdf")
                 Dim textString As String = File.ReadAllText(textPath)
 

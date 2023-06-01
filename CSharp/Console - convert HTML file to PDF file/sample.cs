@@ -21,8 +21,8 @@ namespace Sample
 
             if (p != null)
             {
-                string inputFile = @"..\..\example.htm";
-                string outputFile = @"..\..\test.pdf";
+                string inputFile = @"..\..\..\example.htm";
+                string outputFile = @"..\..\..\test.pdf";
 
                 int result = p.HtmlToPdfConvertFile(inputFile, outputFile);
 

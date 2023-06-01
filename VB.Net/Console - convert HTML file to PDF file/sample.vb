@@ -15,8 +15,8 @@ Namespace Sample
             p.PageSettings.Numbering.Text = "Page {page} of {numpages}"
 
             If p IsNot Nothing Then
-                Dim inputFile As String = "..\..\example.htm"
-                Dim outputFile As String = "..\..\test.pdf"
+                Dim inputFile As String = "..\..\..\example.htm"
+                Dim outputFile As String = "..\..\..\test.pdf"
 
                 Dim result As Integer = p.HtmlToPdfConvertFile(inputFile, outputFile)
 

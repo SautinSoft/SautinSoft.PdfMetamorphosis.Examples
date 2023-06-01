@@ -10,7 +10,7 @@ Namespace Sample
 			Dim p As New SautinSoft.PdfMetamorphosis()
 
             If p IsNot Nothing Then
-                Dim htmlPath As String = "..\..\example.htm"
+                Dim htmlPath As String = "..\..\..\example.htm"
                 Dim pdfPath As String = Path.ChangeExtension(htmlPath, ".pdf")
                 Dim htmlString As String = ""
 

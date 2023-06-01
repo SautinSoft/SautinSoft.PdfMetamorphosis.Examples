@@ -7,8 +7,8 @@ Module sample
 				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 
         Dim p As New SautinSoft.PdfMetamorphosis()
-        Dim rtfPath As String = "..\..\example.rtf"
-        Dim pdfPath As String = "..\..\test.pdf"
+        Dim rtfPath As String = "..\..\..\example.rtf"
+        Dim pdfPath As String = "..\..\..\test.pdf"
 
         ' Let's create a PDF file from RTF file
         p.PageSettings.Orientation = SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Landscape
@@ -23,10 +23,10 @@ Module sample
         p.SplitPDFFileToPDFFolder(pdfPath, Path.GetDirectoryName(pdfPath))
 
         'Merge only 1st and 3rd pages
-        Dim pdfFiles() As String = {"..\..\test-00001.pdf", "..\..\test-00003.pdf"}
-        p.MergePDFFileArrayToPDFFile(pdfFiles, "..\..\test_Split_and_Merge_1and3page.pdf")
+        Dim pdfFiles() As String = {"..\..\..\test-00001.pdf", "..\..\..\test-00003.pdf"}
+        p.MergePDFFileArrayToPDFFile(pdfFiles, "..\..\..\test_Split_and_Merge_1and3page.pdf")
 
         'Show merged PDF (it doesn't have 2nd page)
-        System.Diagnostics.Process.Start(New System.Diagnostics.ProcessStartInfo("..\..\test_Split_and_Merge_1and3page.pdf") With {.UseShellExecute = True})
+        System.Diagnostics.Process.Start(New System.Diagnostics.ProcessStartInfo("..\..\..\test_Split_and_Merge_1and3page.pdf") With {.UseShellExecute = True})
     End Sub
 End Module
