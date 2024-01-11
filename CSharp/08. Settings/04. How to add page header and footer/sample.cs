@@ -15,7 +15,7 @@ namespace Sample
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
 
             //Let's add page header in HTML format
-            string headerInHtml = "<table width=\"100%\" border=\"1\"><tr><td></td><td width=\"50%\" align=\"center\">You are welcome!</td></tr></table>";
+            string headerInHtml = "<table width=\"100%\" border=\"0\" style=\"border-collapse: collapse\"><tr><td style=\"border: 1pt solid black\" ></td><td width=\"50%\" align=\"center\" style=\"border: 1pt solid black\">You are welcome!</td></tr></table>";
             p.PageSettings.Header.FromString(headerInHtml, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html);
 
             string footerInRtf = @"{\rtf1\i Italic footer }";

@@ -23,15 +23,6 @@ namespace Sample
 
             p.WaterMarks.Add(w1);
 
-            SautinSoft.PdfMetamorphosis.WaterMark w2 = p.WaterMarks.Add();
-            w2.Img = System.Drawing.Image.FromFile(@"..\..\..\WaterMark.png");
-            w2.Transparency = 20;
-            w2.PosX.Mm = 60;
-            w2.PosY.Mm = 0;
-            w2.PosDX.Mm = 100;
-            w2.PosDY.Mm = 100;
-            w2.SelectedPages = new int[] { 1 };
-
             if (p != null)
             {
                 string rtfPath = @"..\..\..\example.rtf";

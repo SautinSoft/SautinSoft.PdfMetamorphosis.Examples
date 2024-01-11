@@ -34,7 +34,7 @@ namespace Sample
             #region merge PDF files
             //Merge only 1st and 3rd pages
             string[] pdfFiles = { @"..\..\..\test-00001.pdf", @"..\..\..\test-00003.pdf" };
-            p.MergePDFFileArrayToPDFFile(pdfFiles, @"..\..\test_Split_and_Merge_1and3page.pdf");
+            p.MergePDFFileArrayToPDFFile(pdfFiles, @"..\..\..\test_Split_and_Merge_1and3page.pdf");
             #endregion
 
             //Show merged PDF (it doesn't have 2nd page)

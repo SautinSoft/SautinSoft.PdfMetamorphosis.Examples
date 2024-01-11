@@ -10,8 +10,8 @@ Module sample
         Dim p As New SautinSoft.PdfMetamorphosis()
 
         'Let's add page header in HTML format
-        Dim headerInHtml As String = "<table width=""100%"" border=""1""><tr><td></td><td width=""50%"" align=""center"">You are welcome!</td></tr></table>"
-        p.PageSettings.Header.FromString(headerInHtml, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
+        Dim headerInHtml As String = "<table width=\"100%\" border=\"0\" style=\"border-collapse: collapse\"><tr><td style=\"border: 1pt solid black\" ></td><td width=\"50%\" align=\"center\" style=\"border: 1pt solid black\">You are welcome!</td></tr></table>"
+		p.PageSettings.Header.FromString(headerInHtml, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html)
 
         Dim footerInRtf As String = "{\rtf1\i Italic Footer}"
         p.PageSettings.Footer.FromString(footerInRtf, SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Rtf)

@@ -16,7 +16,7 @@ namespace Sample
 
             // PDF Metamorphosis .Net generates PDF 1.4 document by default.
             // Let's change the PDF version to PDF_A.
-            p.PdfSettings.PdfVersion = SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A;
+            p.PdfSettings.PdfVersion = SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A1a;
 
             if (p != null)
             {
