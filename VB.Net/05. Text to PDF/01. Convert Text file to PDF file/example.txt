@@ -23,13 +23,13 @@ First of all, your license will never expires, you may use the product as long a
 
 Verifying the license 
 
-SautinSoft has a right to validate your license automatically. For example, the ì1 Developer Licenseî is valid only for a single developer to develop applications. 
+SautinSoft has a right to validate your license automatically. For example, the ‚Äú1 Developer License‚Äù is valid only for a single developer to develop applications. 
 
 1 Developer License
-This license allows a single developer to develop and deploy desktop (non-Internet) and Internet applications using our component. This license is valid to redistribute the component with unlimited number of desktop (non-Internet) applications and not valid to deploy the component with your Internet applications. To deploy the component with Internet apps use ì1 Server Licenseî x N or ìUnlimited Servers Licenseî.
+This license allows a single developer to develop and deploy desktop (non-Internet) and Internet applications using our component. This license is valid to redistribute the component with unlimited number of desktop (non-Internet) applications and not valid to deploy the component with your Internet applications. To deploy the component with Internet apps use ‚Äú1 Server License‚Äù x N or ‚ÄúUnlimited Servers License‚Äù.
 
 Site License
-This license allows all developers within the purchasing organization and located at the same business address to develop and deploy desktop (non-Internet) and Internet applications using our component. This license is valid to redistribute the component with unlimited number of desktop (non-Internet) applications and not valid to deploy the component with your Internet applications. To deploy the component with Internet apps use ì1 Server Licenseî x N or ìUnlimited Servers Licenseî.
+This license allows all developers within the purchasing organization and located at the same business address to develop and deploy desktop (non-Internet) and Internet applications using our component. This license is valid to redistribute the component with unlimited number of desktop (non-Internet) applications and not valid to deploy the component with your Internet applications. To deploy the component with Internet apps use ‚Äú1 Server License‚Äù x N or ‚ÄúUnlimited Servers License‚Äù.
 
 1 Server License
 This license is not valid for development. This license is valid to deploy the component at 1 production server.
