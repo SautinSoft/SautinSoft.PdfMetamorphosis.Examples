@@ -6,10 +6,11 @@ Namespace Sample
     Friend Class Test
 
         Shared Sub Main(ByVal args() As String)
-		    ' Get your free 30-day key here:   
+			' Before starting, we recommend to get a free 100-day key:
             ' https://sautinsoft.com/start-for-free/
-		
-            ' Activation of PDF Metamorphosis .Net after purchasing
+            
+            ' Apply the key here:
+
 			  SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
 			
 			' Place your serial(s) number.

@@ -4,8 +4,12 @@ Module sample
     Sub Main()
 
         'How to add page header and footer
-				' Activate your license here
-				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+			' Before starting, we recommend to get a free 100-day key:
+            ' https://sautinsoft.com/start-for-free/
+            
+            ' Apply the key here:
+			' SautinSoft.PdfMetamorphosis.SetLicense("...");
+
 
         Dim p As New SautinSoft.PdfMetamorphosis()
 

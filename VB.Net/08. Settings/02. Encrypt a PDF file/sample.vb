@@ -4,9 +4,12 @@ Namespace Sample
 	Friend Class Test
 
 		Shared Sub Main(ByVal args() As String)
-			' Contains details for encrypting and access permissions for a PDF document.
-				' Activate your license here
-				' SautinSoft.PdfMetamorphosis.SetLicense("1234567890")
+			' Before starting, we recommend to get a free 100-day key:
+            ' https://sautinsoft.com/start-for-free/
+            
+            ' Apply the key here:
+			' SautinSoft.PdfMetamorphosis.SetLicense("...");
+
 
 			Dim p As New SautinSoft.PdfMetamorphosis()
 

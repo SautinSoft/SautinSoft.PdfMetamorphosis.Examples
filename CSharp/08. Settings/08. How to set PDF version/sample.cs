@@ -7,8 +7,11 @@ namespace Sample
 
         static void Main(string[] args)
 		{
-			// Activate your license here
-			// SautinSoft.PdfMetamorphosis.SetLicense("1234567890");
+			// Before starting, we recommend to get a free 100-day key:
+            // https://sautinsoft.com/start-for-free/
+            
+            // Apply the key here:
+			// SautinSoft.PdfMetamorphosis.SetLicense("...");
 
             // How to set a version for the PDF document.
             SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();

@@ -10,10 +10,12 @@ namespace Sample
 		
 		static void Main(string[] args)
 		{
-			// Get your free 30-day key here:   
+			// Before starting, we recommend to get a free 100-day key:
             // https://sautinsoft.com/start-for-free/
-			
-            // Activate your license here
+            
+            // Apply the key here:
+			// SautinSoft.PdfMetamorphosis.SetLicense("...");
+
 			PdfMetamorphosis.SetLicense("1234567890");
 			
             // Place your serial(s) number.
