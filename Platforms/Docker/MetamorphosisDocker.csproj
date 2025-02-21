@@ -8,17 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-<PackageReference Include="SautinSoft.PdfMetamorphosis" Version="*" />
-<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="*" />
-<PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="*" />
- <PackageReference Include="Pkcs11Interop" Version="5.1.2" />
+    <PackageReference Include="Pkcs11Interop" Version="5.1.2" />
 	  <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-	  <PackageReference Include="SkiaSharp" Version="2.88.8" />
-	  <PackageReference Include="SkiaSharp.HarfBuzz" Version="2.88.8" />
+	  <PackageReference Include="SkiaSharp" Version="2.88.7" />
+	  <PackageReference Include="SkiaSharp.HarfBuzz" Version="2.88.7" />
 	  <PackageReference Include="Svg.Skia" Version="1.0.0.18" />
-	  <PackageReference Include="System.IO.Packaging" Version="4.4.0" />
+	  <PackageReference Include="System.IO.Packaging" Version="4.5.0" />
 	  <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
-	  <PackageReference Include="System.Xml.XPath.XmlDocument" Version="4.3.0" />
+      <PackageReference Include="SautinSoft.PdfMetamorphosis" Version="*" />
+      <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="*" />
+      <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="*" />
+
   </ItemGroup>
 
   <ItemGroup>
