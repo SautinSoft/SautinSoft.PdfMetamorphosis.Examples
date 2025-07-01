@@ -1,0 +1,1895 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>PdfMetamorphosis</name>
+  </assembly>
+  <members>
+    <!-- Badly formed XML comment ignored for member "F:SautinSoft.Pdf.Annotations.PdfAnnotationType.Line" -->
+    <!-- Badly formed XML comment ignored for member "F:SautinSoft.Pdf.Annotations.PdfAnnotationType.Square" -->
+    <!-- Badly formed XML comment ignored for member "F:SautinSoft.Pdf.Annotations.PdfAnnotationType.FileAttachment" -->
+    <!-- Badly formed XML comment ignored for member "T:SautinSoft.Pdf.Utils.AdobeCFFReader.Font" -->
+    <!-- Badly formed XML comment ignored for member "P:SautinSoft.Document.Drawing.Vector.Length" -->
+    <!-- Badly formed XML comment ignored for member "P:SautinSoft.Document.Drawing.Vector.LengthSquared" -->
+    <member name="T:SautinSoft.PdfMetamorphosis">
+      <summary>
+            Main class of the PDF Metamorphosis .Net. Allows to export Text, RTF, DOCX, DOC and HTML to PDF; split and merge PDF documents.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.HtmlSetting">
+      <summary>
+            Set options necessary for HTML to PDF conversion, such as BaseUrl etc.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.HtmlSetting.BaseUrl">
+      <summary>
+            The part of document’s URL preceding its name. Default value: <see cref="F:System.String.Empty" />.
+            </summary>
+      <remarks>URL assigned to a page to convert "relative URLs" into "absolute URLs" by the addition of a document name or trailing slash /.<br /><br />
+            It’s very important to set this property when converting HTML document in memory in order to determine where all relative URLs are pointing to and convert them to absolute.
+            <br /><br />For example, let's convert HTML string to a PDF file.<br /><br />
+            Assuming we've specified:<br /><br />
+            p.HtmlOptions.BaseUrl = @"d:\my webs";<br /><br />
+            Now when the component meets 'src="images/asterisk.jpg"' it will try to load an image from: "d:\my webs\images\asterisk.jpg"
+            </remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\04. HTML to PDF\04. ASP.Net - Convert HTML to PDF\Default.aspx.cs" title="Using the property BaseUrl in ASP.Net application using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\04. HTML to PDF\04. ASP.Net - Convert HTML to PDF\Default.aspx.vb" title="Using the property BaseUrl in ASP.Net application using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlSetting.#ctor">
+      <summary>
+            Creates an instance of the <see cref="T:SautinSoft.PdfMetamorphosis.HtmlSetting" /> object
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.Sizes">
+      <summary>
+            Class to set the component's options in inches, mm and pixels.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.Sizes.#ctor">
+      <summary>
+            Creates an instance of the Sizes class.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.Sizes.FromMm(System.Single)">
+      <summary>
+            Get Sizes object from mm.
+            </summary>
+      <param name="mm">Value in millimeters.</param>
+      <returns>Reference to the new Sizes.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.Sizes.FromInch(System.Single)">
+      <summary>
+            Get Sizes object from inches.
+            </summary>
+      <param name="inch">Value in inches.</param>
+      <returns>Reference to the new Sizes.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.Sizes.FromPix(System.Single)">
+      <summary>
+            Get Sizes object from pixes.
+            </summary>
+      <param name="pix">Value in px.</param>
+      <returns>Reference to the new Sizes.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.Sizes.op_Addition(SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes)">
+      <summary>
+            Allows to concatenate two Sizes objects.
+            </summary>
+      <param name="sz1">Sizes object1.</param>
+      <param name="sz2">Sizes object2</param>
+      <returns>Reference to the new Sizes.</returns>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.Sizes.Pix">
+      <summary>
+            Value in pixels.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.Sizes.Mm">
+      <summary>
+            Value in mm.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.Sizes.Inch">
+      <summary>
+            Value in inches.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.WaterMarksCollection">
+      <summary>
+            Allows operate with watermarks in PDF document
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMarksCollection.Add(System.IO.Stream,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,System.Int32,SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset)">
+      <summary>
+            Adds a watermark to PDF document.
+            </summary>
+      <param name="img">Watermark as System.Drawing.Image object.</param>
+      <param name="x">A watermark position by horizontal from the left-top edge of page.</param>
+      <param name="y">A watermark position by vertical from the left-top edge of page.</param>
+      <param name="width">A watermark width.</param>
+      <param name="height">A watermark height.</param>
+      <param name="transparency">Transparency in percents. 0 - invisible. </param>
+      <param name="selectedPagesPreset">On which types of pages place this watermark.</param>
+      <returns>Reference to the just added watermark.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMarksCollection.Add(System.IO.Stream,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,System.Int32,System.Int32[])">
+      <summary>
+            Adds a watermark to PDF document.
+            </summary>
+      <param name="img">Watermark as stream object.</param>
+      <param name="x">A watermark position by horizontal from the left-top edge of page.</param>
+      <param name="y">A watermark position by vertical from the left-top edge of page.</param>
+      <param name="width">A watermark width.</param>
+      <param name="height">A watermark height.</param>
+      <param name="transparency">Transparency in percents. 0 - invisible. </param>
+      <param name="selectedPages">Place this watermark only on these pages.</param>
+      <returns>Reference to the just added watermark.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMarksCollection.Add(System.String,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,System.Int32,SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset)">
+      <summary>
+            Adds a watermark to PDF document.
+            </summary>
+      <param name="imagePath">Path to image for watermark.</param>
+      <param name="x">A watermark position by horizontal from the left-top edge of page.</param>
+      <param name="y">A watermark position by vertical from the left-top edge of page.</param>
+      <param name="width">A watermark width.</param>
+      <param name="height">A watermark height.</param>
+      <param name="transparency">Transparency in percents. 0 - invisible. </param>
+      <param name="selectedPagesPreset">On which types of pages place this watermark.</param>
+      <returns>Reference to the just added watermark.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMarksCollection.Add(System.String,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,SautinSoft.PdfMetamorphosis.Sizes,System.Int32,System.Int32[])">
+      <summary>
+            Adds a watermark to PDF document.
+            </summary>
+      <param name="imagePath">Path to image for watermark.</param>
+      <param name="x">A watermark position by horizontal from the left-top edge of page.</param>
+      <param name="y">A watermark position by vertical from the left-top edge of page.</param>
+      <param name="width">A watermark width.</param>
+      <param name="height">A watermark height.</param>
+      <param name="transparency">Transparency in percents. 0 - invisible. </param>
+      <param name="pageNum">Place this watermark only on these pages.</param>
+      <returns>Reference to the just added watermark.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.WaterMark">
+      <summary>
+            Allows to add watermarks into a produced PDF document
+            </summary>
+      <remarks>
+            Supported image formats:
+            <ul><li>BMP</li><li>GIF</li><li>JPEG</li><li>PNG</li><li>TIFF</li></ul></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset">
+      <summary>
+            page types to place watermark.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.All">
+      <summary>
+            Place a watermark to all pages.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.First">
+      <summary>
+            Place a watermark only on first page.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.AllExceptFirst">
+      <summary>
+            Place a watermark to all pages except first.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.Even">
+      <summary>
+            Place a watermark to even pages.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.Odd">
+      <summary>
+            Place a watermark to odd pages.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.PosX">
+      <summary>
+            A watermark position by horizontal from the left-top edge of page. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.PosY">
+      <summary>
+            A watermark position by vertical from the left-top edge of page. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.PosDX">
+      <summary>
+            A watermark width. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.PosDY">
+      <summary>
+            A watermark height. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPages">
+      <summary>
+            Gets or sets an array with pages to load (0-based index).    
+            Setting <see cref="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPages" /> properties are overrides 
+            <see cref="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPagesPreset" />.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPagesPreset">
+      <summary>
+            On which types of pages place this watermark. Default value: <see cref="F:SautinSoft.PdfMetamorphosis.WaterMark.PagesPreset.All" />.
+            Setting <see cref="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPagesPreset" /> properties are overrides 
+            <see cref="P:SautinSoft.PdfMetamorphosis.WaterMark.SelectedPages" />.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.Transparency">
+      <summary>
+            Set the transparency for the watermark in percents (0 .. 100). Default value: 50.
+            </summary>
+      <remarks>0 - means absolutely invisible, 100% transparent.</remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMark.Img">
+      <summary>
+        <see cref="T:System.IO.Stream" /> object that contains a watermark.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMark.#ctor">
+      <summary>
+            Creates an instance of Watermark class.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\03. How to add a WaterMark\sample.cs" title="How to add Watermarks into a produced PDF document using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\03. How to add a WaterMark\sample.vb" title="How to add Watermarks into a produced PDF document using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMark.#ctor(System.IO.Stream)">
+      <summary>
+            Creates an instance of Watermark class.
+            </summary>
+      <param name="img">Watermark as object of standard System.Drawing.Image class.</param>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.WaterMark.#ctor(System.String)">
+      <summary>
+            Creates an instance of Watermark class.
+            </summary>
+      <param name="imagePath">Path to a watermark image.</param>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PageSetting">
+      <summary>
+            Set different page properties. For example, set page size, margins, page numbers and add watermarks on page.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes">
+      <summary>
+            Set page size of produced PDF document.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Width">
+      <summary>
+            Set a custom page width in inches, px or mm. Default value: 0 (Auto).
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Height">
+      <summary>
+            Set a custom page height in inches, px or mm. Default value: 0 (Auto).
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Auto">
+      <summary>
+            Use default page size.
+            </summary>
+      <remarks>Default values:<ol><li>RTF to PDF: The same page size as in a source document.</li><li>Text, HTML to PDF: Letter.</li></ol></remarks>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A0">
+      <summary>
+            Set A0 page size, 841 x 1189 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A1">
+      <summary>
+            Set A1 page size, 594 x 841 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A2">
+      <summary>
+            Set A2 page size, 420 x 594 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A3">
+      <summary>
+            Set A3 page size, 297 x 420 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A4">
+      <summary>
+            Set A4 page size, 210 x 297 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A5">
+      <summary>
+            Set A5 page size, 148 x 210 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.A6">
+      <summary>
+            Set A6 page size, 105 x 148 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.B5Jis">
+      <summary>
+            Set B5Jis page size, 182 x 257 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.B5Iso">
+      <summary>
+            Set B5Iso page size, 176 x 250 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.B6">
+      <summary>
+            Set B6 page size, 128 x 182 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Folio">
+      <summary>
+            Set Folio page size, 210 x 330 mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Letter">
+      <summary>
+            Set Letter size, 8.5 x 11 Inch.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Legal">
+      <summary>
+            Set Legal page size, 8.5 x 14 Inch.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Statement">
+      <summary>
+            Set Statement page size, 5.5 x 8.5 Inch.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Executive">
+      <summary>
+            Set Executive page size, 7.25 x 10.5 Inch.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageSizes.Oficio2">
+      <summary>
+            Set Oficio2 page size, 8.5 x 13 Inch
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PageSetting.Margins">
+      <summary>
+            Set page margins in inches or mm.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.Margins.#ctor">
+      <summary>
+            Creates an instance of Margins class.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.Margins.Inch(System.Single)">
+      <summary>
+            Set page margin in inches.
+            </summary>
+      <param name="value">Value in millimeters.</param>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.Margins.Mm(System.Single)">
+      <summary>
+            Set page margin in mm.
+            </summary>
+      <param name="value">Value in millimeters.</param>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.Margins.Auto">
+      <summary>
+            Set page margin by auto.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PageSetting.Orientations">
+      <summary>
+            Set a page orientation of PDF document.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Portrait">
+      <summary>
+            Set portrait page orientation.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Landscape">
+      <summary>
+            Set landscape page orientation.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Auto">
+      <summary>
+            Page orientation the same as in a source document.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers">
+      <summary>
+            Allows to set page numbers and their properties in PDF.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.Text">
+      <summary>
+            Set a custom page numbers in produced PDF document. Default value: "".
+            </summary>
+      <remarks>
+            Default value: empty string<br /><br />
+            Using this property you may set custom page numbers as you wish.<br /><br /> 
+            These are special keywords to custom page numbers:<br /><br /><b>{page}</b> - current page number<br /><b>{numpages}</b> - total pages<br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\06. How to set page numbers\sample.cs" title="How to set page numbers in the output PDF document using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\06. How to set page numbers\Sample.vb" title="How to set page numbers in the output PDF document using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.StartingNumber">
+      <summary>
+            Sets and gets the value for {page} field of <see cref="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.Text" /> property. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.TotalPages">
+      <summary>
+            Sets and gets the value for {numpages} field of <see cref="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.Text" /> property. Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.PosX">
+      <summary>
+            Set a position by horizontal for page numbering string.  Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.PosY">
+      <summary>
+            Set a position by vertical for page numbering string.  Default value: 0.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.FontFace">
+      <summary>
+            Set a custom font face for page numbers. Default value: "Times New Roman".
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.FontSize">
+      <summary>
+            Set a custom font size for page numbers. Default value: 10.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.FontColor">
+      <summary>
+            Set a custom font color for page numbers. Default value: <see cref="P:System.Drawing.Color.Black" />.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PageSetting.PageNumbers.#ctor">
+      <summary>
+            Creates an instance of PageNumbers class.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.Size">
+      <summary>
+            Set page size (A0,A1,A2,A3,A4,A5,A6 etc) for the PDF document.
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: Letter</li></ol></summary>
+      <remarks>
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: Letter</li></ol></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.Orientation">
+      <summary>
+            Set page orientation (Landscape or Portrait). Default values: <see cref="F:SautinSoft.PdfMetamorphosis.PageSetting.Orientations.Auto" />.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.MarginLeft">
+      <summary>
+            Set left page margin.
+             Default values:
+             <ol><li>RTF, DOCX, DOC to PDF: The same as in a source document.</li><li>Text, HTML to PDF: 10 mm</li></ol></summary>
+      <remarks>
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document.</li><li>Text, HTML to PDF: 10 mm</li></ol></remarks>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.MarginRight">
+      <summary>
+            Set right page margin.
+             Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document.</li><li>Text, HTML to PDF: 10 mm</li></ol></summary>
+      <remarks>
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document.</li><li>Text, HTML to PDF: 10 mm</li></ol></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.MarginTop">
+      <summary>
+            Set top page margin.
+             Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: 10 mm</li></ol></summary>
+      <remarks>
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: 10 mm</li></ol></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.MarginBottom">
+      <summary>
+            Set bottom page margin.
+             Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: 10 mm</li></ol></summary>
+      <remarks>
+            Default values:<ol><li>RTF, DOCX, DOC to PDF: The same as in a source document</li><li>Text, HTML to PDF: 10 mm</li></ol></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\07. How to set page size and margins\sample.cs" title="How to set page size, orientation and margins in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\07. How to set page size and margins\sample.vb" title="How to set page size, orientation and margins in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.Numbering">
+      <summary>
+            Set a custom page numbers in produced document. 
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.Header">
+      <summary>
+            Set a page header in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.HeaderOnFirstPage">
+      <summary>
+            Setup a header on first page in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.HeaderOnEvenPage">
+      <summary>
+            Setup a header on even page in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.Footer">
+      <summary>
+            Set a page footer in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.FooterOnFirstPage">
+      <summary>
+            Set a page footer on first page in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSetting.FooterOnEvenPage">
+      <summary>
+            Set a page footer on even page in any format from: Html, Rtf or Text.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.HeadersFooters">
+      <summary>
+            Class to create a custom header and footer in produced PDF document in any of formats: Rtf, Html or Text.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.HeadersFooters.Y">
+      <summary>
+            Margin from top for header or margin from bottom for footer. Default value: 12.7 mm or 0.5 inches.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat">
+      <summary>
+            Allows you to specify the input format for header and footer. 
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Docx">
+      <summary>
+            Input DocX format
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Rtf">
+      <summary>
+            Input Rtf format
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Html">
+      <summary>
+            Input Html format
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Text">
+      <summary>
+            Input Text format
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat.Doc">
+      <summary>
+            Input Doc format
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:SautinSoft.PdfMetamorphosis.HeadersFooters" /> class.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromHtmlURL(System.String)">
+      <summary>
+            Set header/footer from HTML URL.
+            </summary>
+      <param name="url">URL as string</param>
+      <remarks>We don't recommend to use it for complex HTML documents. The best is using a simple HTML table with text and images as header/footer.<br /><br /></remarks>
+      <example>
+        <code>
+            SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
+            p.PageSettings.Header.FromHtmlURL(@"http://mysite.com/header.htm");
+            </code>
+        <code lang="vbnet">
+            Dim p As New SautinSoft.PdfMetamorphosis()
+            p.PageSettings.Header.FromHtmlURL("http://mysite.com/header.htm")
+            </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromFile(System.String)">
+      <summary>
+            Set header/footer from local RTF file
+            </summary>
+      <param name="path">Path to local RTF file</param>
+      <remarks>This method is very usefull when you want to insert header/footer from existing RTF document.<br /><br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\10. RTF to PDF - change the page footer to the custom\sample.cs" title="How to add page header and footer using C#.">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\10. RTF to PDF change the page footer to the custom\sample.vb" title="How to add page header and footer using VB.Net.">
+        </code>
+      </example>
+      <example>
+        <code>
+            SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
+            p.PageSettings.Header.FromFile(@"d:\header.rtf");
+            </code>
+        <code lang="vbnet">
+            Dim p As New SautinSoft.PdfMetamorphosis()
+            p.PageSettings.Header.FromFile("d:\header.rtf")
+            </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromFile(System.String,SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat)">
+      <summary>
+            Set header/footer from any DOCX, DOC, RTF, HTML or Text file.
+            </summary>
+      <param name="path">Path to local file.</param>
+      <param name="inputFormat">Allows you to specify the input format for header and footer.</param>
+      <remarks>We don't recommend to use it for complex HTML documents as header or footer. The best is using simple HTML table with text and images as header/footer.<br /><br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\04. How to add page header and footer\sample.cs" title="How to add page header and footer using C#.">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\04. How to add page header and footer\sample.vb" title="How to add page header and footer using VB.Net.">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromStream(System.IO.Stream,SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat)">
+      <summary>
+            Set header/footer from any DOCX, DOC, RTF, HTML or Text stream.
+            </summary>
+      <param name="stream">Stream of file.</param>
+      <param name="inputFormat">Allows you to specify the input format for header and footer.</param>
+      <remarks>We don't recommend to use it for complex HTML documents as header or footer. The best is using simple HTML table with text and images as header/footer.<br /><br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\04. How to add page header and footer\sample.cs" title="How to add page header and footer.">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\04. How to add page header and footer\sample.vb" title="How to add page header and footer.">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromString(System.String,SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat)">
+      <summary>
+            Set header/footer from any RTF, HTML or Text string. DOCX and DOC can't be loaded from the string object. For DOCX and DOC format use <see cref="M:SautinSoft.PdfMetamorphosis.HeadersFooters.FromStream(System.IO.Stream,SautinSoft.PdfMetamorphosis.HeadersFooters.InputFormat)" />.
+            </summary>
+      <param name="str">String of file.</param>
+      <param name="inputFormat">Allows you to specify the input format for header and footer.</param>
+      <remarks>We don't recommend to use it for complex HTML documents as header or footer. The best is using simple HTML table with text and images as header/footer.<br /><br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\04. How to add page header and footer\sample.cs" title="How to add page header and footer.">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\04. How to add page header and footer\sample.vb" title="How to add page header and footer.">
+        </code>
+      </example>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PdfPermissions">
+      <summary>
+            Specifies the operations that are allowed to a user on an encrypted PDF document.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.DisallowAll">
+      <summary>
+            Disallows all operations on the PDF document. This is the default value.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.AllowAll">
+      <summary>
+            Allows all operations on the PDF document.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.ContentCopy">
+      <summary>
+            Allows copying or otherwise extracting text and graphics from the document, 
+            including extraction for accessibility purposes.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.ContentCopyForAccessibility">
+      <summary>
+            Allows extract text and graphics in support of accessibility to disabled users 
+            or for other purposes. When using RC4 40-bit encryption, this option is ignored
+            and accessibility is allowed whenever <b>ContentCopy</b> is set.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.ModifyContents">
+      <summary>
+            Allows modifying the document’s contents.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.ModifyAnnotations">
+      <summary>
+            Allows adding or modifying text annotations. When using RC4 40-bit encryption, 
+            this option also allows filling in form fields.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.FillIn">
+      <summary>
+            Allows filling in forms and signing the document. When using RC4 40-bit encryption,
+            this option is ignored and filling in form is allowed whenever <b>ModifyAnnotations</b> is set.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.DocumentAssembly">
+      <summary>
+            Allows assembling the document: inserting, rotating, or deleting pages and creating 
+            navigation elements such as bookmarks or thumbnail images. When using RC4 40-bit encryption,
+            this option is ignored and document assembly is allowed when <b>ModifyContents</b> is set.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.Printing">
+      <summary>
+            Allows printing the document.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfPermissions.HighResolutionPrinting">
+      <summary>
+            Allows printing the document to the highest resolution possible.
+            When using RC4 40-bit encryption, this option is ignored and high resolution 
+            printing is allowed when <b>Printing</b> is set.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PdfEncryptionAlgorithm">
+      <summary>
+            Specifies the encryption algorithm to use for encrypting a PDF document.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfEncryptionAlgorithm.RC4_40">
+      <summary>
+            RC4 encryption, key length of 40 bits.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfEncryptionAlgorithm.RC4_128">
+      <summary>
+            RC4 encryption, key length of 128 bits.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PdfSecurity">
+      <summary>
+            Contains details for encrypting and access permissions for a PDF document, such as Password, Permissions etc.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSecurity.EncryptionAlgorithm">
+      <summary>
+            Specifies the encryption algorithm to use.
+            The default value is <see cref="F:SautinSoft.PdfMetamorphosis.PdfEncryptionAlgorithm.RC4_40" />.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSecurity.OwnerPassword">
+      <summary>
+            Specifies the owner password for the encrypted PDF document.
+            </summary>
+      <remarks>
+        <para>
+            The owner password allows the user to open an encrypted PDF document without any
+            access restrictions specified in <see cref="P:SautinSoft.Document.PdfEncryptionDetails.Permissions" />.
+            </para>
+        <para>
+            The owner password cannot be the same as the user password. If you don't specify an 
+            owner password, then the system will generate a random password when generating the PDF document.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSecurity.UserPassword">
+      <summary>
+            Specifies the user password required for opening the encrypted PDF document.
+            </summary>
+      <remarks>
+        <para>
+            The user password will be required to open an encrypted PDF document for viewing.
+            The permissions specified in <see cref="P:SautinSoft.Document.PdfEncryptionDetails.Permissions" />
+            will be enforced by the reader software.
+            </para>
+        <para>
+            The user password can be null or empty string, in this case no password will be
+            required from the user when opening the PDF document. The user password cannot be
+            the same as the owner password.
+            </para>
+      </remarks>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSecurity.Permissions">
+      <summary>
+            Specifies the operations that are allowed to a user on an encrypted PDF document. 
+            The default value is <see cref="F:SautinSoft.PdfMetamorphosis.PdfPermissions.DisallowAll" />.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PdfSetting">
+      <summary>
+            Set properties for resulting PDF document, such as PDF version, compression etc.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\08. How to set PDF version\sample.cs" title="How to set PDF version in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\08. How to set PDF version\sample.vb" title="How to set PDF version in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions">
+      <summary>
+            Allows to set PDF version
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_12">
+      <summary>
+            The output file will comply with the PDF 1.2 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_13">
+      <summary>
+            The output file will comply with the PDF 1.3 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_14">
+      <summary>
+            The output file will comply with the PDF 1.4 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_15">
+      <summary>
+            The output file will comply with the PDF 1.5 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_16">
+      <summary>
+            The output file will comply with the PDF 1.6 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_17">
+      <summary>
+            The output file will comply with the PDF 1.7 standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A1a">
+      <summary>
+            The output file will comply with the PDF/A-1a 
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A1b">
+      <summary>
+            The output file will comply with the PDF/A-1b
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A2a">
+      <summary>
+            The output file will comply with the PDF/A-2a 
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A2b">
+      <summary>
+            The output file will comply with the PDF/A-2b
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A2u">
+      <summary>
+            The output file will comply with the PDF/A-2u
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A3a">
+      <summary>
+            The output file will comply with the PDF/A-3a 
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A3b">
+      <summary>
+            The output file will comply with the PDF/A-3b
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_A3u">
+      <summary>
+            The output file will comply with the PDF/A-3u
+            (see <a href="http://en.wikipedia.org/wiki/PDF/A" target="_blank">http://en.wikipedia.org/wiki/PDF/A</a>)
+            standard.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.PreserveContentControls">
+      <summary>
+            Specifies whether to preserve Microsoft Word content controls as native PDF's form fields or convert 
+            them to text. Default is <b>true</b>.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersion">
+      <summary>
+            Set version for produced PDF document. Default value: <see cref="F:SautinSoft.PdfMetamorphosis.PdfSetting.PdfVersions.PDF_14" />.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\08. How to set PDF version\sample.cs" title="How to set PDF version in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\08. How to set PDF version\sample.vb" title="How to set PDF version in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.EmbedAllFonts">
+      <summary>
+            Embed all used fonts inside the PDF document. Default value: false.
+            </summary>
+      <remarks>
+            This makes the PDF document completely standalone and independent of fonts installed on the computer where the PDF document will be opened.
+            </remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\05. How to embed all fonts inside PDF document\sample.cs" title="How to embed all fonts inside PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\05. How to embed all fonts inside PDF document\sample.vb" title="How to embed all fonts inside PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.ClipboardTextProtection">
+      <summary>
+            Gets and sets the protection on copying of all text from PDF document through clipboard. Default value: false.
+            </summary>
+      <remarks>
+            In case of true, it's impossible to copy text to the clipboard from resulting PDF. Important: The PDF document can be displayed incorrectly in some editors and converted back to Word also incorrectly.
+            </remarks>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.Compression">
+      <summary>
+            Allows to set compression type to change size of the PDF document. Default value: true.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.JpegQuality">
+      <summary>
+            Specify the image quality from 1 ... 100. Allows to reduce the size of PDF document due to loss of quality of embedded images. Default value: 90.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.FontsDirectory">
+      <summary>
+            Full local path to fonts directory (any folder with  *.ttf files). Default value: Fonts directory of the current OS.
+            </summary>
+      <remarks>
+        <b>Advice for developers who creates ASP.Net or Silverlight projects:</b>
+        <br />
+        <br />
+            Some hosting providers disables any access to windows directories. For example, GoDaddy doesn't allow to read directory "Windows\Fonts". <br />
+            We recommend to create own "Fonts" directory in your project and copy *.ttf files to it from "Windows\Fonts". You may copy only several fonts, but we recommend to put the font "Arial Unicode MS" - ARIALUNI.TTF anyway.<br /><br /></remarks>
+      <example>
+        <code>
+            SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();          
+            //p.PdfSettings.FontsDirectory = @"c:\windows\fonts\";
+            p.PdfSettings.FontsDirectory = Path.Combine(Server.MapPath(""), @"Fonts\");
+            </code>
+        <code lang="vbnet">
+            Dim p As New SautinSoft.PdfMetamorphosis()          
+            'p.PdfSettings.FontsDirectory = @"c:\windows\fonts\";
+            p.PdfSettings.FontsDirectory = Path.Combine(Server.MapPath(""), "Fonts\")
+            </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.PdfProducer">
+      <summary>
+            Set producer in an output document.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSetting.PdfSecurity">
+      <summary>
+            Sets the password in the resulting file.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.TextSetting">
+      <summary>
+            Set a single font face, size, color and alignment for all text in PDF document.
+            </summary>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces">
+      <summary>
+             Set a single custom font for a whole text in PDF document. Default option: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Auto" />.
+             </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\09. How to set single font for the PDF document\sample.cs" title="How to set single font for the PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\09. How to set single font for the PDF document\sample.vb" title="How to set single font for the PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.#ctor">
+      <summary>
+            Creates a new instance of the <see cref="T:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces">SautinSoft.PdfMetamorphosis.CTextStyle.CFontFace</see> class
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Auto">
+      <summary>
+            Use fonts in PDF the same as in a source document.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Courier">
+      <summary>
+            Make all text in PDF by Courier font.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Helvetica">
+      <summary>
+            Make all text in PDF by Helvetica font.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.TimesNewRoman">
+      <summary>
+            Make all text in PDF by "Times New Roman" font.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Symbol">
+      <summary>
+            Make all text in PDF by Symbol font.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.ZapfDingbats">
+      <summary>
+            Make all text in PDF by Zapf font.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Custom(System.String)">
+      <summary>
+            Make all text by a custom font.
+            </summary>
+      <param name="nameFont">Name of the custom font</param>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\09. How to set single font for the PDF document\sample.cs" title="How to set single font for the PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\09. How to set single font for the PDF document\sample.vb" title="How to set single font for the PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.TextSetting.Alignments">
+      <summary>
+            Set a single text alignment for all text in PDF document. Default option: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Auto" />.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.#ctor">
+      <summary>
+            Creates an instance of Alignments class.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Auto">
+      <summary>
+            Keep text alignment the same as in a source document.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Left">
+      <summary>
+            Align all text in PDF document by left.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Center">
+      <summary>
+            Align all text in PDF document by center.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Right">
+      <summary>
+            Align all text in PDF document by right.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Justify">
+      <summary>
+            Align all text in PDF document by justify.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.Aligment">
+      <summary>
+            Set a custom alignment for whole text in PDF document.  Default option: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Auto" /></summary>
+      <remarks>
+            Default option: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.Alignments.Auto" />. This means: Keep text alignment the same as in a source document.<br /><br /></remarks>
+    </member>
+    <member name="T:SautinSoft.PdfMetamorphosis.TextSetting.Scale">
+      <summary>
+            Allows to scale some text properties (the scaling of FontSize and TextWidth appears in future)
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.Scale.LineSpacing">
+      <summary>
+            Scale the current line spacing in percents. max = 10(1000%), min = 0.1(10%). Default value: 1.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.Scale.TextSize">
+      <summary>
+            Scale the current text size in percents. max = 10(1000%), min = 0.1(10%). Default value: 1.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.Scaling">
+      <summary>
+            Allows to scale some text properties (the scaling of FontSize and TextWidth appears in future)
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.FontSize">
+      <summary>
+            Set single font size for all text in the PDF document. Default value: 0.
+            </summary>
+      <remarks>
+            The component will use the same font sizes as in a source document.
+            </remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\09. How to set single font for the PDF document\sample.cs" title="How to set single font for the PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\09. How to set single font for the PDF document\sample.vb" title="How to set single font for the PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.FontColor">
+      <summary>
+            Set single font color for all text in the PDF document.
+            Default value: <see cref="F:System.Drawing.Color.Empty" />.
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\09. How to set single font for the PDF document\sample.cs" title="How to set single font for the PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\09. How to set single font for the PDF document\sample.vb" title="How to set single font for the PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSetting.FontFace">
+      <summary>
+            Set a single custom font for a whole text in PDF document. 
+            Default value: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Auto">Auto</see>.
+            </summary>
+      <remarks>Default value: <see cref="M:SautinSoft.PdfMetamorphosis.TextSetting.FontFaces.Auto">Auto</see>. <br />
+            This means that fonts in PDF will be same as in source document.
+            </remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\08. Settings\09. How to set single font for the PDF document\sample.cs" title="How to set single font for the PDF document in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\08. Settings\09. How to set single font for the PDF document\sample.vb" title="How to set single font for the PDF document in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextSetting.#ctor">
+      <summary>
+            Creates an instance of the <see cref="T:SautinSoft.PdfMetamorphosis.TextSetting">CTextStyle</see> class
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.Exception">
+      <summary>
+            Get exception details in case of converting failed
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:SautinSoft.PdfMetamorphosis">SautinSoft.PdfMetamorphosis</see> class
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PdfSettings">
+      <summary>
+            Set properties for resulting PDF document, such as PDF version, compression etc.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.WaterMarks">
+      <summary>
+            Add waterMarks in PDF document.
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.PageSettings">
+      <summary>
+            Set page properties: page size, orientation, margins, page numbers etc
+            </summary>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\05. Text to PDF\01. Convert Text file to PDF file\sample.cs" title="How to convert Text file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\05. Text to PDF\01. Convert Text file to PDF file\sample.vb" title="How to convert Text file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.TextSettings">
+      <summary>
+            Allows to set text properties: font face, size, colors, image quality and other conversion options
+            </summary>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.HtmlSettings">
+      <summary>
+            Set options necessary for HTML to PDF conversion, such as BaseUrl etc.
+            </summary>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.SetSerial(System.String)">
+      <summary>
+            Method for activation of your copy, doesn't work in trial version. The method works the same as <see cref="P:SautinSoft.PdfMetamorphosis.Serial">Serial</see> property
+            </summary>
+      <remarks>Use this method only in full version after purchasing.</remarks>
+      <param name="s">Serial number as string</param>
+      <example>
+        <code lang="cs">
+            SautinSoft.PdfMetamorphosis p = new SautinSoft.PdfMetamorphosis();
+            p.SetSerial("123456789");
+            </code>
+        <code lang="vbnet">
+            Dim p As New SautinSoft.PdfMetamorphosis()
+            p.SetSerial("123456789")
+            </code>
+      </example>
+    </member>
+    <member name="P:SautinSoft.PdfMetamorphosis.Serial">
+      <summary>
+            Property to activate your copy, the same as method <see cref="M:SautinSoft.PdfMetamorphosis.SetSerial(System.String)">SetSerial</see></summary>
+      <remarks>Use this property after purchasing.</remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\09. Product Activation\01. Activate the component after purchasing\sample.cs" title="Activate the component after purchasing in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\09. Product Activation\01. Activate the component after purchasing\sample.vb" title="Activate the component after purchasing in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.SetLicense(System.String)">
+      <summary>
+        <br>Activate your copy after purchasing or use temporary license for delete trial message. ATTENTION: specify this property first of all before creating the instance of PDF Metamorphosis!</br>
+        <br>Use it when you got own license. We offer two license types:</br>
+        <br>Permanent license from <see href="https://sautinsoft.com/order.php">sautinsoft.com</see> and</br>
+        <br>Temporary license from <see href="https://sautinsoft.com/start-for-free/">start-for-free</see>.</br>
+        <br>Have question? Ask us: <see href="mailto:support@sautinsoft.com">support@sautinsoft.com</see>.</br>
+      </summary>
+      <param name="License">A string which contains a license. To get a permanent license, visit <see href="https://sautinsoft.com/order.php">sautinsoft.com</see>. To get a temporary license, please use online form here: <see href="https://sautinsoft.com/start-for-free/" />.</param>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\09. Product Activation\01. Activate the component after purchasing\sample.cs" title="Activate the component after purchasing in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\09. Product Activation\01. Activate the component after purchasing\sample.vb" title="Activate the component after purchasing in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextToPdfConvertFile(System.String,System.String)">
+      <summary>
+            Converts a Text file to PDF file.
+            </summary>
+      <param name="textPath">A local to path to a textual file.</param>
+      <param name="pdfPath">A local to path to the pdf file.</param>
+      <returns>
+            0 - converting successfully<br />
+            3 - converting failed. (For details see: <see cref="P:SautinSoft.PdfMetamorphosis.Exception" />.)
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\05. Text to PDF\01. Convert Text file to PDF file\sample.cs" title="How to convert Text file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\05. Text to PDF\01. Convert Text file to PDF file\sample.vb" title="How to convert Text file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextToPdfConvertStream(System.IO.Stream)">
+      <summary>
+            Convert the stream with Text document to a PDF stream.
+            </summary>
+      <param name="inputStream">Stream with Text document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextToPdfConvertByte(System.Byte[])">
+      <summary>
+            Converts array of Text bytes into array of PDF bytes.
+            </summary>
+      <param name="inputBytes">Text document as bytes array</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.TextToPdfConvertStringToByte(System.String)">
+      <summary>
+            Converts string of Text into array of PDF bytes.
+            </summary>
+      <param name="text">Text document as string</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\05. Text to PDF\02. Convert Text to PDF in memory\sample.cs" title="How to convert Text to PDF in memory using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\05. Text to PDF\02. Convert Text to PDF in memory\sample.vb" title="How to convert Text to PDF in memory using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocxToPdfConvertFile(System.String,System.String)">
+      <summary>
+            Converts DOCX file to PDF file.
+            </summary>
+      <param name="docxPath">Path to a local DOCX file.</param>
+      <param name="pdfPath">A local path to create a PDF file.</param>
+      <returns>
+            0 - converting successfully<br />
+            1 - can't open input DOCX file, check the input path.<br />
+            2 - can't create output PDF file, check the output path.<br />
+            3 - conversion failed.
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\02. Docx to PDF\01. Convert DOCX file to PDF file\sample.cs" title="How to convert DOCX file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\02. Docx to PDF\01. Convert DOCX file to PDF file\sample.vb" title="How to convert DOCX file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocxToPdfConvertStream(System.IO.Stream)">
+      <summary>
+            Convert the stream with DOCX document to a PDF stream.
+            </summary>
+      <param name="inputStream">Stream with DOCX document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocxToPdfConvertByte(System.Byte[])">
+      <summary>
+            Convert the array of bytes with DOCX document to a PDF bytes array.
+            </summary>
+      <param name="docxBytes">Array of bytes with DOCX document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\02. Docx to PDF\02. Convert DOCX to PDF in memory\sample.cs" title="How to convert DOCX to PDF in memory using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\02. Docx to PDF\02. Convert DOCX to PDF in memory\sample.vb" title="How to convert DOCX to PDF in memory using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocToPdfConvertFile(System.String,System.String)">
+      <summary>
+            Converts DOC file to PDF file.
+            </summary>
+      <param name="docPath">Path to a local DOC file.</param>
+      <param name="pdfPath">A local path to create a PDF file.</param>
+      <returns>
+            0 - converting successfully<br />
+            1 - can't open input DOC file, check the input path.<br />
+            2 - can't create output PDF file, check the output path.<br />
+            3 - conversion failed.
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\01. Doc to PDF\01. Convert DOC file to PDF file\sample.cs" title="How to convert DOC file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\01. Doc to PDF\01. Convert DOC file to PDF file\sample.vb" title="How to convert DOC file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocToPdfConvertStream(System.IO.Stream)">
+      <summary>
+            Convert the stream with DOC document to a PDF stream.
+            </summary>
+      <param name="inputStream">Stream with DOC document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.DocToPdfConvertByte(System.Byte[])">
+      <summary>
+            Convert the array of bytes with DOC document to a PDF bytes array.
+            </summary>
+      <param name="docBytes">Array of bytes with DOC document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\01. Doc to PDF\02. Convert DOC to PDF in memory\sample.cs" title="How to convert DOC to PDF in memory using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\01. Doc to PDF\02. Convert DOC to PDF in memory\sample.vb" title="How to convert DOC to PDF in memory using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertStream(System.IO.Stream)">
+      <summary>
+            Convert the stream with RTF document to a PDF stream.
+            </summary>
+      <param name="inputStream">Stream with RTF document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertByte(System.Byte[])">
+      <summary>
+            Converts array of RTF bytes into array of PDF bytes.
+            </summary>
+      <param name="inputBytes">RTF document as bytes array</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <remarks>
+      </remarks>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertStringToByte(System.String)">
+      <summary>
+            Converts RTF string into array of PDF bytes.
+            </summary>
+      <param name="inputString">RTF document as string</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\03. RTF to PDF\02. Convert RTF string to PDF bytes\sample.cs" title="How to convert RTF string to PDF bytes using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\03. RTF to PDF\02. Convert RTF string to PDF bytes\sample.vb" title="How to convert RTF string PDF bytes using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertStringToFile(System.String,System.String)">
+      <summary>
+            Converts RTF string to PDF file.
+            </summary>
+      <param name="inputString">RTF document as string</param>
+      <param name="outputFileName">Local path to output PDF file</param>
+      <returns>
+            0 - converting successfully<br />        
+            2 - can't create output file, check the output path<br />
+            3 - converting failed
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\03. RTF to PDF\03. Convert RTF string to PDF file\sample.cs" title="How to convert RTF string to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\03. RTF to PDF\03. Convert RTF string to PDF file\sample.vb" title="How to convert RTF string to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertFileToByte(System.String)">
+      <summary>
+            Converts RTF file into array of PDF bytes.
+            </summary>
+      <param name="inputFileName">Local path to input RTF file</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\03. RTF to PDF\02. Convert RTF string to PDF bytes\sample.cs" title="How to convert RTF string to PDF bytes using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\03. RTF to PDF\02. Convert RTF string to PDF bytes\sample.vb" title="How to convert RTF string PDF bytes using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.RtfToPdfConvertFile(System.String,System.String)">
+      <summary>
+            Converts a RTF file to PDF file.
+            </summary>
+      <param name="rtfPath">Local path to input RTF file</param>
+      <param name="pdfPath">Local path to output PDF file</param>
+      <returns>
+            0 - converting successfully<br />
+            1 - can't open input RTF file, check the input path<br />
+            2 - can't create output file, check the output path<br />
+            3 - converting failed
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\03. RTF to PDF\01. Convert RTF file to PDF file\sample.cs" title="How to convert RTF file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\03. RTF to PDF\01. Convert RTF file to PDF file\sample.vb" title="How to convert RTF file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertStream(System.IO.Stream)">
+      <summary>
+            Convert the stream with HTML document to a PDF stream.
+            </summary>
+      <param name="inputStream">Stream with HTML document.</param>
+      <returns>PDF document as byte array, or null in case of converting failed.</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertByte(System.Byte[])">
+      <summary>
+            Converts array of HTML bytes into array of PDF bytes.
+            </summary>
+      <param name="inputBytes">HTML document as bytes array</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <remarks>
+      </remarks>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertStringToByte(System.String)">
+      <summary>
+            Converts HTML string into array of PDF bytes. Don't forget to set the property <see cref="P:SautinSoft.PdfMetamorphosis.HtmlSetting.BaseUrl" /> to see images in output PDF file.
+            </summary>
+      <param name="inputString">Any string in HTML format, even a piece of HTML code</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\04. HTML to PDF\02. Convert HTML string to PDF bytes\sample.cs" title="How to convert HTML string to PDF bytes using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\04. HTML to PDF\02. Convert HTML string to PDF bytes\sample.vb" title="How to convert HTML string PDF bytes using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertFile(System.String,System.String)">
+      <summary>
+            Converts HTML file or URL to PDF file. Output file will be overwritten.
+            </summary>
+      <param name="inputFileName">Path to local HTML file or URL</param>
+      <param name="outputFileName">Local path to output PDF file</param>
+      <returns>
+            0 - converting successfully<br />
+            1 - can't open input HTML file, check the input path<br />
+            2 - can't create output file, check the output path<br />
+            3 - converting failed
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\04. HTML to PDF\01. Convert HTML file to PDF file\sample.cs" title="How to convert HTML file to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\04. HTML to PDF\01. Convert HTML file to PDF file\sample.vb" title="How to convert HTML file to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertFileToByte(System.String)">
+      <summary>
+            Converts HTML file or URL into array of PDF bytes.
+            </summary>
+      <param name="inputFileName">Path to local HTML file or URL</param>
+      <returns>PDF document as byte array, or null in case of converting failed</returns>
+      <remarks>Converts HTML file or URL into array of PDF bytes.<br /><br /></remarks>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\04. HTML to PDF\02. Convert HTML string to PDF bytes\sample.cs" title="How to convert HTML string to PDF bytes using C# in memory">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\04. HTML to PDF\02. Convert HTML string to PDF bytes\sample.vb" title="How to convert HTML string PDF bytes using VB.Net in memory">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.HtmlToPdfConvertStringToFile(System.String,System.String)">
+      <summary>
+            Converts HTML string to PDF file. Don't forget to set the property <see cref="P:SautinSoft.PdfMetamorphosis.HtmlSetting.BaseUrl" /> to see images in output PDF file.
+            </summary>
+      <param name="inputString">Any string in HTML format, even a piece of HTML code</param>
+      <param name="outputFileName">Local path to output PDF file</param>
+      <returns>
+            0 - converting successfully<br />        
+            2 - can't create output file, check the output path<br />
+            3 - converting failed
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\04. HTML to PDF\03. Convert HTML string to PDF file\sample.cs" title="How to convert HTML string to PDF file in C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\04. HTML to PDF\03. Convert HTML string to PDF file\sample.vb" title="How to convert HTML string to PDF file in VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.SplitPDFFileToPDFFolder(System.String,System.String)">
+      <summary>
+            Splits PDF document by pages
+            </summary>
+      <param name="SourceFile">Path to PDF file which you want to split by pages</param>
+      <param name="OutputPath">Path to directory where to store each PDF page as single file after splitting</param>
+      <returns>0 - split successfully<br />
+            2 - error, output directory doesn't exist<br /></returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\07. Split and Merge PDF\02. Split and Merge PDF\sample.cs" title="How to split and merge PDF documents using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\07. Split and Merge PDF\02. Split and Merge PDF\sample.vb" title="How to split and merge PDF documents using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.MergePDFFileArrayToPDFFile(System.String[],System.String)">
+      <summary>
+            Merge several PDF files into a single PDF file
+            </summary>
+      <param name="Files">Array of paths to PDF documents</param>
+      <param name="DestFile">Path to resulting PDF, it will be created by the component or overwritten if the PDF document already exists</param>
+      <returns>0 - merged successfully<br />
+            1 - error, can't merge PDF documents<br />
+            2 - error, can't create output file, probably it used by another application<br />
+            3 - merging failed<br />
+            4 - merged successfully, but some files were not merged
+            </returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\07. Split and Merge PDF\02. Split and Merge PDF\sample.cs" title="How to split and merge PDF documents using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\07. Split and Merge PDF\02. Split and Merge PDF\sample.vb" title="How to split and merge PDF documents using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.MergePDFFileToPDFFile(System.String,System.String)">
+      <summary>
+            Merge two PDF files. Merge File1Path and DestFile file into a single DestFile.
+            </summary>
+      <param name="File1Path">Path to an existing PDF file</param>
+      <param name="DestFile">Path to a second PDF file to merge the first file into</param>
+      <remarks>If the second file does not already exist the component just copies the first file to a new name<br /></remarks>
+      <returns>0 - merged successfully<br />
+            1 - error, can't merge PDF documents<br />
+            2 - error, can't create output file, probably it used by another application<br />
+            3 - merging failed        
+            </returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.MergePDFFileArrayToPDFStream(System.String[])">
+      <summary>
+            Merge several PDF files into a single document as byte stream
+            </summary>
+      <param name="Files">Array of paths to PDF documents</param>
+      <returns>Single PDF document as byte array or null in case of merging failed</returns>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.MergePDFStreamArrayToPDFStream(System.Collections.ArrayList)">
+      <summary>
+            Merge several PDF documents into a single document in memory
+            </summary>
+      <param name="pdfBytes">ArrayList which contains PDF documents as array of bytes</param>
+      <returns>Single PDF document as byte array or null in case of merging failed</returns>
+      <example>
+        <code lang="cs" source="..\Packages\PDF Metamorphosis .Net\Code samples\CSharp\07. Split and Merge PDF\01. ASP.Net - Merge PDF\Default.aspx.cs" title="How to merge PDF documents in memory using C#">
+        </code>
+        <code lang="vbnet" source="..\Packages\PDF Metamorphosis .Net\Code samples\VB.Net\07. Split and Merge PDF\01. ASP.Net - Merge PDF\Default.aspx.vb" title="How to merge PDF documents in memory using VB.Net">
+        </code>
+      </example>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PrintPdf(System.String,System.Int32,System.Int32)">
+      <summary>
+            Print the PDF file using the default printer with time settings
+            </summary>
+      <param name="PdfFile">Path to the PDF file to be printed</param>
+      <param name="timeInSecToLoadAdobeReader">Timeout in seconds to load Adobe Reader</param>
+      <param name="timeinSecToSendingDocumentOnPrint">Timeout in seconds to send PDF document on print</param>
+      <remarks>This method uses the "Adobe Reader" to print PDF documents. Please be sure that you have installed "Acrobat Reader".<br /><br /></remarks>
+    </member>
+    <member name="M:SautinSoft.PdfMetamorphosis.PrintPdf(System.String)">
+      <summary>
+            Print the PDF file using the default printer
+            </summary>
+      <param name="PdfFile">Path to the PDF file to be printed</param>
+      <remarks>This method uses the "Adobe Reader" to print PDF documents. Please be sure that you have installed "Acrobat Reader".<br /><br /></remarks>
+    </member>
+    <!-- Badly formed XML comment ignored for member "T:BidiSharp.BidiPBA" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ChannelDefinitionMapper.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ChannelDefinitionMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ChannelDefinitionMapper.getFixedPoint(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ColorSpaceMapper.getFixedPoint(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ColorSpaceMapper.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.ColorSpaceMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.EnumeratedColorSpaceMapper.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.EnumeratedColorSpaceMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.EsRgbColorSpaceMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.PalettizedColorSpaceMapper.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.PalettizedColorSpaceMapper.ToString" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.PalettizedColorSpaceMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.PalettizedColorSpaceMapper.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.PalettizedColorSpaceMapper.getCompImgHeight(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.Resampler.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.Resampler.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.SYccColorSpaceMapper.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Color.SYccColorSpaceMapper.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Icc.ICCProfiler.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.Icc.ICCProfiler.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.Icc.Tags.ICCTag" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.codestream.ProgressionType" -->
+    <!-- Badly formed XML comment ignored for member "F:CSJ2K.j2k.codestream.reader.PktDecoder.ttIncl" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.codestream.writer.BitOutputBuffer" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.codestream.writer.BitOutputBuffer.Length" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.codestream.writer.BitOutputBuffer.Buffer" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.codestream.writer.BitOutputBuffer.writeBit(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.codestream.writer.BitOutputBuffer.writeBits(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.codestream.writer.CodestreamWriter.writePacketHead(System.Byte[],System.Int32,System.Boolean,System.Boolean,System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.codestream.writer.FileCodestreamWriter" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.codestream.writer.FileCodestreamWriter.writePacketHead(System.Byte[],System.Int32,System.Boolean,System.Boolean,System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.codestream.writer.FileCodestreamWriter.writePacketBody(System.Byte[],System.Int32,System.Boolean,System.Boolean,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "F:CSJ2K.j2k.codestream.writer.PktEncoder.prevtIdxs" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.entropy.CBlkSizeSpec" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.CBlkSizeSpec.getCBlkWidth(System.Byte,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.entropy.decoder.EntropyDecoder" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.EntropyDecoder.getSynSubbandTree(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.MQDecoder.fastDecodeSymbols(System.Int32[],System.Int32,System.UInt32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.MQDecoder.decodeSymbols(System.Int32[],System.Int32[],System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.MQDecoder.decodeSymbol(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.MQDecoder.init" -->
+    <!-- Badly formed XML comment ignored for member "F:CSJ2K.j2k.entropy.decoder.StdEntropyDecoder.state" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.StdEntropyDecoder.getCodeBlock(System.Int32,System.Int32,System.Int32,CSJ2K.j2k.wavelet.synthesis.SubbandSyn,CSJ2K.j2k.image.DataBlk)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.StdEntropyDecoder.magRefPass(CSJ2K.j2k.image.DataBlk,CSJ2K.j2k.entropy.decoder.MQDecoder,System.Int32,System.Int32[],System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.StdEntropyDecoder.rawMagRefPass(CSJ2K.j2k.image.DataBlk,CSJ2K.j2k.entropy.decoder.ByteToBitInput,System.Int32,System.Int32[],System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.decoder.StdEntropyDecoder.cleanuppass(CSJ2K.j2k.image.DataBlk,CSJ2K.j2k.entropy.decoder.MQDecoder,System.Int32,System.Int32[],System.Int32[],System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.encoder.EBCOTRateAllocator.getAllCodeBlocks" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.encoder.EntropyCoder.isReversible(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.entropy.encoder.MQCoder" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.entropy.encoder.MQCoder.fastCodeSymbols(System.Int32,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.entropy.PrecinctSizeSpec" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.fileformat.reader.FileFormatReader.readJP2HeaderBox(System.Int64,System.Int32,System.Int64)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.fileformat.reader.FileFormatReader.readContiguousCodeStreamBox(System.Int64,System.Int32,System.Int64)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.BlkImgDataSrc" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.BlkImgDataSrc.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.BlkImgDataSrc.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgData.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataAdapter.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataConverter.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataConverter.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataJoiner.#ctor(CSJ2K.j2k.image.BlkImgDataSrc[],System.Int32[])" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataJoiner.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataJoiner.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.ImgDataJoiner.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.input.ImgReaderPGM" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGM.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGM.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGM.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.input.ImgReaderPGX" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGX.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGX.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPGX.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.input.ImgReaderPPM" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPPM.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPPM.getInternCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.input.ImgReaderPPM.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.invcomptransf.InvCompTransf.getFixedPoint(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.invcomptransf.InvCompTransf.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.invcomptransf.InvCompTransf.getCompData(CSJ2K.j2k.image.DataBlk,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.invcomptransf.InvCompTransf.setTile(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.invcomptransf.InvCompTransf.nextTile" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.output.ImgWriterPGM" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.output.ImgWriterPGM.#ctor(System.String,CSJ2K.j2k.image.BlkImgDataSrc,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.output.ImgWriterPGX" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.output.ImgWriterPGX.#ctor(System.String,CSJ2K.j2k.image.BlkImgDataSrc,System.Int32,System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.image.output.ImgWriterPPM" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.output.ImgWriterPPM.write" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.output.ImgWriterPPM.writeHeaderInfo" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.image.Tiler.#ctor(CSJ2K.j2k.image.BlkImgDataSrc,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.io.BinaryDataOutput" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.io.BinaryDataOutput.writeByte(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.io.BinaryDataOutput.writeShort(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.io.BufferedRandomAccessFile" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.io.BufferedRandomAccessFile.writeByte(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.io.EndianType_Fields" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.JJ2KExceptionHandler" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.JJ2KExceptionHandler.handleException(System.Exception)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.ModuleSpec.parseIdx(System.String,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.NotImplementedError" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.NotImplementedError.#ctor" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.quantization.dequantizer.CBlkQuantDataSrcDec" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.quantization.dequantizer.Dequantizer.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.quantization.dequantizer.Dequantizer.getSynSubbandTree(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.quantization.dequantizer.Dequantizer.setTile(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.quantization.dequantizer.Dequantizer.nextTile" -->
+    <!-- Badly formed XML comment ignored for member "F:CSJ2K.j2k.quantization.dequantizer.StdDequantizerParams.exp" -->
+    <!-- Badly formed XML comment ignored for member "F:CSJ2K.j2k.quantization.dequantizer.StdDequantizerParams.nStep" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.quantization.QuantizationType_Fields" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.quantization.quantizer.Quantizer.getAnSubbandTree(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.quantization.QuantTypeSpec" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.roi.encoder.ArbROIMaskGenerator" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.roi.encoder.ArbROIMaskGenerator.getROIMask(CSJ2K.j2k.image.DataBlkInt,CSJ2K.j2k.wavelet.Subband,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.roi.encoder.ArbROIMaskGenerator.makeMask(CSJ2K.j2k.wavelet.Subband,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.roi.encoder.RectROIMaskGenerator" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.roi.encoder.RectROIMaskGenerator.getROIMask(CSJ2K.j2k.image.DataBlkInt,CSJ2K.j2k.wavelet.Subband,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.roi.encoder.ROIMaskGenerator" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.roi.encoder.ROIScaler" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.roi.ROIDeScaler.getSynSubbandTree(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.StringSpec.#ctor(System.Int32,System.Int32,System.Byte,System.String,System.String[],CSJ2K.j2k.util.ParameterList)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.util.FacilityManager" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.util.ISRandomAccessIO" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.util.MsgLogger_Fields" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.MsgPrinter.nextLineEnd(System.String,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.MsgPrinter.nextWord(System.String,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ParameterList.parseArgs(System.String[])" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.util.ThreadPool" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.ThreadPoolThread.Run" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.#ctor(System.Int32,System.Int32,System.String)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.runTarget(IThreadRunnable,System.Object)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.runTarget(IThreadRunnable,System.Object,System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.clearTargetErrors" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.putInIdleList(CSJ2K.j2k.util.ThreadPool.ThreadPoolThread)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.util.ThreadPool.getIdle(System.Boolean)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloat" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.SynLowNegSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.SynLowPosSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.SynHighNegSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.SynHighPosSupport" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.analyze_lpf(System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Single[],System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.analyze_hpf(System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Single[],System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.getLPSynthesisFilter" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.getHPSynthesisFilter" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.isSameAsFullWT(System.Int32,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterFloatLift9x7.Equals(System.Object)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.analysis.AnWTFilterInt" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterIntLift5x3.analyze_hpf(System.Int32[],System.Int32,System.Int32,System.Int32,System.Int32[],System.Int32,System.Int32,System.Int32[],System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterSpec.getHFilters(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.analysis.AnWTFilterSpec.getVFilters(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.CBlkWTDataSrcDec.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.InvWTFull.getNomRangeBits(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.MultiResImgDataAdapter.getCompImgHeight(System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.synthesis.SynWTFilter" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloat" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.SynLowNegSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.SynLowPosSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.SynHighNegSupport" -->
+    <!-- Badly formed XML comment ignored for member "P:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.SynHighPosSupport" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.synthetize_lpf(System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.synthetize_hpf(System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.synthesis.SynWTFilterFloatLift9x7.isSameAsFullWT(System.Int32,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.synthesis.SynWTFilterInt" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.WTDecompSpec" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTDecompSpec.#ctor(System.Int32,System.Int32,System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTDecompSpec.getDecSpecType(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTDecompSpec.getDecompType(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTDecompSpec.getLevels(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:CSJ2K.j2k.wavelet.WTFilterSpec" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTFilterSpec.#ctor(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "M:CSJ2K.j2k.wavelet.WTFilterSpec.getKerSpecType(System.Int32)" -->
+    <!-- Badly formed XML comment ignored for member "T:jj2000.j2k.util.NativeServices" -->
+    <!-- Badly formed XML comment ignored for member "P:jj2000.j2k.util.NativeServices.ThreadConcurrency" -->
+    <!-- Badly formed XML comment ignored for member "M:SupportClass.Tokenizer.MoveNext" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.BopPop.iSplitPos" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.BRAI.ifmt" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Chart3D.fWalls2D" -->
+    <!-- Badly formed XML comment ignored for member "T:b2xtranslator.OfficeGraph.ChartFrtInfo" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.DataFormat.yi" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.DataFormat.iss" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.DataLabExtContents.rgchSep" -->
+    <!-- Badly formed XML comment ignored for member "T:b2xtranslator.OfficeGraph.Fbi" -->
+    <!-- Badly formed XML comment ignored for member "T:b2xtranslator.OfficeGraph.Fbi2" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Font.dyHeight" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Font.icv" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Font.bls" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Format.ifmt" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.FrtFontList.verExcel" -->
+    <!-- Badly formed XML comment ignored for member "T:b2xtranslator.OfficeGraph.GelFrame" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.IFmtRecord.ifmt" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.MarkerFormat.icvFore" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.MarkerFormat.icvBack" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Text.x" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Text.y" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Text.dx" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Text.dy" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Window1.xWn" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OfficeGraph.Window1.yWn" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OpenXmlLib.SpreadsheetML.Sml.ExternalConnections.ElDbPr" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OpenXmlLib.SpreadsheetML.Sml.QueryTable.AttrPreserveSortFilterLayout" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OpenXmlLib.SpreadsheetML.Sml.Sheet.ElCol" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OpenXmlLib.SpreadsheetML.Sml.Sheet.AttrScaleWithDoc" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.OpenXmlLib.SpreadsheetML.Sml.Workbook.AttrIncludeHiddenRowCol" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.DocFileFormat.FormFieldData.fHasListBox" -->
+    <!-- Badly formed XML comment ignored for member "F:b2xtranslator.DocFileFormat.ToolbarDelta.iTB" -->
+  </members>
+</doc>
